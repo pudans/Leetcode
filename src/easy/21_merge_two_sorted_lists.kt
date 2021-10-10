@@ -1,6 +1,13 @@
 package easy
 
 import utils.ListNode
+import utils.add
+import utils.toStringList
+
+/**
+ * 21. Merge Two Sorted Lists
+ * Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.
+ */
 
 class Solution21 {
 
@@ -41,11 +48,18 @@ class Solution21 {
                 lastResult = newRes
             }
             return result
-        }
-        else if (l1 != null) {
+
+        } else if (l1 != null) {
             return l1
         } else {
             return l2
         }
     }
+}
+
+fun main() {
+    println(Solution21().mergeTwoLists(
+        ListNode.create(ListNode(1), ListNode(2), ListNode(4)),
+        ListNode.create(ListNode(1), ListNode(3), ListNode(4)),
+    ).toStringList())
 }

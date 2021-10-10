@@ -1,4 +1,4 @@
-package easy
+package medium
 
 class Solution7 {
 
