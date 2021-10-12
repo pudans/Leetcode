@@ -2,51 +2,64 @@ package easy
 
 abstract class GuessGame {
 
+    var target = 3
+
     fun guess(num:Int): Int = when {
-        num > 3 -> -1
-        num < 3 -> 1
+        num > target -> -1
+        num < target -> 1
         else -> 0
     }
 
     abstract fun guessNumber(n:Int):Int
 }
 
+/**
+ * 374. Guess Number Higher or Lower
+ * https://leetcode.com/problems/guess-number-higher-or-lower/
+ *
+ * We are playing the Guess Game. The game is as follows:
+ * I pick a number from 1 to n. You have to guess which number I picked.
+ * Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.
+ * You call a pre-defined API int guess(int num), which returns 3 possible results:
+ *
+ * -1: The number I picked is lower than your guess (i.e. pick < num).
+ * 1: The number I picked is higher than your guess (i.e. pick > num).
+ * 0: The number I picked is equal to your guess (i.e. pick == num).
+ * Return the number that I picked.
+ */
+
 class Solution374: GuessGame() {
 
-    override fun guessNumber(n:Int): Int {
-        return findInRange(1,n)
-    }
+    override fun guessNumber(n:Int): Int = findInRange(1,n)
 
-    fun findInRange(start: Int, end: Int): Int {
-        if (start >= end) {
-            return start
-        } else {
-            if (guess(start) == 0) {
-                return start
-            }
-
-            if (guess(end) == 0) {
-                return end
-            }
-
-            val mid = ((start.toLong() + end.toLong()) / 2L).toInt()
-            val result = guess(mid)
-             println("$mid $result $start $end")
-
-            return when(result) {
-                -1 -> findInRange(start, mid - 1)
-                1 -> findInRange(mid + 1, end)
-                else -> mid
+    fun findInRange(start: Int, end: Int): Int =
+        when {
+            start >= end -> start
+//            guess(start) == 0 -> start
+//            guess(end) == 0 -> end
+            else -> {
+                val mid = start / 2 + end / 2
+                when(guess(mid)) {
+                    -1 -> findInRange(start, mid - 1)
+                    1 -> findInRange(mid + 1, end)
+                    else -> mid
+                }
             }
         }
-    }
 }
 
-object Main374 {
+fun main() {
+    test(10, 6)
+    test(1, 1)
+    test(2,1)
+    test(2, 2)
+    test(4, 3)
+    test(30, 4)
 
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val dd = Solution374()
-        println(dd.guessNumber(4))
-    }
+}
+
+fun test(n: Int, pick: Int) {
+    val d1 = Solution374()
+    d1.target = pick
+    println(d1.guessNumber(n))
 }
