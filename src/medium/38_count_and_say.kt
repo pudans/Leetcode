@@ -1,6 +1,6 @@
-package easy
+package medium
 
-class Solution38 {
+class Easy38 {
 
     fun countAndSay(input: Int): String {
         if (input == 1) return "1"

@@ -2,12 +2,13 @@ package easy
 
 /**
  * 70. Climbing Stairs
+ * https://leetcode.com/problems/climbing-stairs/
+ *
  * You are climbing a staircase. It takes n steps to reach the top.
-
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+ * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
  */
 
-class Solution70 {
+class Easy70 {
 
     var map: IntArray? = null
 
@@ -39,7 +40,7 @@ class Solution70 {
 }
 
 fun main() {
-    println(Solution70().climbStairs2(2))
-    println(Solution70().climbStairs2(3))
-    println(Solution70().climbStairs2(14))
+    println(Easy70().climbStairs2(2))
+    println(Easy70().climbStairs2(3))
+    println(Easy70().climbStairs2(14))
 }

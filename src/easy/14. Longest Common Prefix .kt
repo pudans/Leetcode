@@ -2,12 +2,13 @@ package easy
 
 /**
  * 14. Longest Common Prefix
+ * https://leetcode.com/problems/longest-common-prefix/
+ *
  * Write a function to find the longest common prefix string amongst an array of strings.
-
-If there is no common prefix, return an empty string "".
+ * If there is no common prefix, return an empty string "".
  */
 
-class Solution14 {
+class Easy14 {
 
     fun longestCommonPrefix(strs: Array<String>): String {
         if (strs.isEmpty()) return ""
@@ -23,6 +24,6 @@ class Solution14 {
 }
 
 fun main() {
-    println(Solution14().longestCommonPrefix(arrayOf("flower","flow","flight")))
-    println(Solution14().longestCommonPrefix(arrayOf("dog","racecar","car")))
+    println(Easy14().longestCommonPrefix(arrayOf("flower","flow","flight")))
+    println(Easy14().longestCommonPrefix(arrayOf("dog","racecar","car")))
 }

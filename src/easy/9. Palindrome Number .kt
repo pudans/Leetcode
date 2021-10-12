@@ -2,12 +2,13 @@ package easy
 
 /**
  * 9. Palindrome Number
+ * https://leetcode.com/problems/palindrome-number/
  *
  * Given an integer x, return true if x is palindrome integer.
-
-An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
+ * An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
  */
-class Solution9 {
+
+class Easy9 {
 
     fun isPalindrome(x: Int): Boolean {
         val str = x.toString()
@@ -24,8 +25,8 @@ class Solution9 {
 }
 
 fun main() {
-    println(Solution9().isPalindrome(121))
-    println(Solution9().isPalindrome(-121))
-    println(Solution9().isPalindrome(10))
-    println(Solution9().isPalindrome(-101))
+    println(Easy9().isPalindrome(121))
+    println(Easy9().isPalindrome(-121))
+    println(Easy9().isPalindrome(10))
+    println(Easy9().isPalindrome(-101))
 }

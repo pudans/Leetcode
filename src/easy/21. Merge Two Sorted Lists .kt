@@ -1,15 +1,16 @@
 package easy
 
 import utils.ListNode
-import utils.add
 import utils.toStringList
 
 /**
  * 21. Merge Two Sorted Lists
+ * https://leetcode.com/problems/merge-two-sorted-lists/
+ *
  * Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.
  */
 
-class Solution21 {
+class Easy21 {
 
     fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
         if (l1 != null && l2 != null) {
@@ -17,7 +18,7 @@ class Solution21 {
             var l11 = l1
             var l22 = l2
 
-            var result: ListNode = if (l1.`val` > l2.`val`) {
+            val result: ListNode = if (l1.`val` > l2.`val`) {
                 l22 = l2.next
                 ListNode(l2.`val`)
             } else {
@@ -58,8 +59,10 @@ class Solution21 {
 }
 
 fun main() {
-    println(Solution21().mergeTwoLists(
-        ListNode.create(ListNode(1), ListNode(2), ListNode(4)),
-        ListNode.create(ListNode(1), ListNode(3), ListNode(4)),
-    ).toStringList())
+    println(
+        Easy21().mergeTwoLists(
+            ListNode.create(ListNode(1), ListNode(2), ListNode(4)),
+            ListNode.create(ListNode(1), ListNode(3), ListNode(4)),
+        ).toStringList()
+    )
 }

@@ -1,6 +1,13 @@
 package easy
 
-class Solution67 {
+/**
+ * 67. Add Binary
+ * https://leetcode.com/problems/add-binary/
+ *
+ * Given two binary strings a and b, return their sum as a binary string.
+ */
+
+class Easy67 {
 
     fun addBinary(a: String, b: String): String {
         var result = ""
@@ -92,4 +99,9 @@ class Solution67 {
         }
         return result
     }
+}
+
+fun main() {
+    println(Easy67().addBinary("11", "1"))
+    println(Easy67().addBinary("1010", "1011"))
 }
