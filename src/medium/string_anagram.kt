@@ -1,4 +1,4 @@
-package easy
+package medium
 
 fun stringAnagram(dictionary: Array<String>, query: Array<String>): Array<Int> {
     return Array<Int>(query.size) { index ->

@@ -1,6 +1,7 @@
 package medium
 
-class Solution {
+class Medium134 {
+
     fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
         val size = gas.size
         for (i in gas.indices) {

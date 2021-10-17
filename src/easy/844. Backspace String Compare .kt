@@ -1,8 +1,17 @@
 package easy
 
-class Solution844 {
+/**
+ * 844. Backspace String Compare
+ * https://leetcode.com/problems/backspace-string-compare/
+ *
+ * Given two strings s and t, return true if they are equal when both are typed into empty text editors.
+ * '#' means a backspace character.
+ * Note that after backspacing an empty text, the text will continue empty.
+ */
 
-    fun backspaceCompare1(S: String, T: String): Boolean {
+class Easy844 {
+
+    fun backspaceCompare(S: String, T: String): Boolean {
 
         var i = 0
         var j = 0
@@ -38,8 +47,13 @@ class Solution844 {
                 }
             }
         }
-        println(strA)
-        println(strB)
         return strA == strB
     }
+}
+
+fun main() {
+    println(Easy844().backspaceCompare("ab#c", "ad#c"))
+    println(Easy844().backspaceCompare("ab##", "c#d#"))
+    println(Easy844().backspaceCompare("a##c", "#a#c"))
+    println(Easy844().backspaceCompare("a#c", "b"))
 }

@@ -1,21 +1,30 @@
 package easy
 
-class Solution1046 {
+/**
+ * 1046. Last Stone Weight
+ * https://leetcode.com/problems/last-stone-weight/
+ *
+ * You are given an array of integers stones where stones[i] is the weight of the ith stone.
+ * We are playing a game with the stones. On each turn, we choose the heaviest two stones and smash them together. Suppose the heaviest two stones have weights x and y with x <= y. The result of this smash is:
+ * If x == y, both stones are destroyed, and
+ * If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.
+ * At the end of the game, there is at most one stone left.
+ * Return the smallest possible weight of the left stone. If there are no stones left, return 0.
+ */
+
+class Easy1046 {
 
     lateinit var stoneList: MutableList<Int>
 
     fun lastStoneWeight(stones: IntArray): Int {
         stoneList = stones.toMutableList()
-
         while (stoneList.size > 1) {
-            println("-----------")
-            println(stoneList.toString())
             findToStones()
         }
         return stoneList.getOrElse(0) { 0 }
     }
 
-    fun findToStones() {
+    private fun findToStones() {
         var stone1Index = 0
         var stone2Index = 1
         if (stoneList.size > 2) {
@@ -30,11 +39,10 @@ class Solution1046 {
                 }
             }
         }
-        println("$stone1Index $stone2Index")
         smashStones(stone1Index, stone2Index)
     }
 
-    fun smashStones(stone1Index: Int, stone2Index: Int) {
+    private fun smashStones(stone1Index: Int, stone2Index: Int) {
         if (stoneList[stone1Index] == stoneList[stone2Index]) {
             if (stone1Index > stone2Index) {
                 stoneList.removeAt(stone1Index)
@@ -51,4 +59,9 @@ class Solution1046 {
             stoneList.removeAt(stone1Index)
         }
     }
+}
+
+fun main() {
+    println(Easy1046().lastStoneWeight(intArrayOf(2, 7, 4, 1, 8, 1)))
+    println(Easy1046().lastStoneWeight(intArrayOf(1)))
 }

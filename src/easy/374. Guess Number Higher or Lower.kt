@@ -28,7 +28,7 @@ abstract class GuessGame {
  * Return the number that I picked.
  */
 
-class Solution374: GuessGame() {
+class Easy374: GuessGame() {
 
     override fun guessNumber(n:Int): Int = findInRange(1,n)
 
@@ -55,11 +55,10 @@ fun main() {
     test(2, 2)
     test(4, 3)
     test(30, 4)
-
 }
 
 fun test(n: Int, pick: Int) {
-    val d1 = Solution374()
+    val d1 = Easy374()
     d1.target = pick
     println(d1.guessNumber(n))
 }

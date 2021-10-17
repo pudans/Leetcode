@@ -1,6 +1,13 @@
 package easy
 
-class Solution485 {
+/**
+ * 485. Max Consecutive Ones
+ * https://leetcode.com/problems/max-consecutive-ones/
+ *
+ * Given a binary array nums, return the maximum number of consecutive 1's in the array.
+ */
+
+class Easy485 {
 
     fun findMaxConsecutiveOnes(nums: IntArray): Int {
         var result = 0
@@ -21,4 +28,9 @@ class Solution485 {
         }
         return result
     }
+}
+
+fun main() {
+    println(Easy485().findMaxConsecutiveOnes(intArrayOf(1, 1, 0, 1, 1, 1)))
+    println(Easy485().findMaxConsecutiveOnes(intArrayOf(1, 0, 1, 1, 0, 1)))
 }

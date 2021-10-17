@@ -1,4 +1,4 @@
-package easy
+package medium
 
 class Solution371 {
     fun getSum(a: Int, b: Int): Int {
