@@ -1,5 +1,6 @@
 package easy
 
+import TreeTopic
 import utils.TreeNode
 
 /**
@@ -9,7 +10,7 @@ import utils.TreeNode
  * Given the root of a binary tree, return the inorder traversal of its nodes' values.
  */
 
-class Easy64 {
+class Easy64: TreeTopic {
 
     val result = ArrayList<Int>()
 

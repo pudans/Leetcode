@@ -1,5 +1,6 @@
 package easy
 
+import TreeTopic
 import utils.TreeNode
 
 /**
@@ -10,7 +11,7 @@ import utils.TreeNode
  * Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
  */
 
-class Easy100 {
+class Easy100: TreeTopic {
 
     fun isSameTree(p: TreeNode?, q: TreeNode?): Boolean {
         if (p == null && q == null) return true

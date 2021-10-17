@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import TwoPointersTopic
+
 /**
  * 88. Merge Sorted Array
  * https://leetcode.com/problems/merge-sorted-array/
@@ -12,7 +15,7 @@ package easy
  * and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
  */
 
-class Easy88 {
+class Easy88: ArraysTopic, TwoPointersTopic {
 
     fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
         val stub = nums1.clone()

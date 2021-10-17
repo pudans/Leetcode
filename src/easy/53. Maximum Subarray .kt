@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import DynamicProgrammingTopic
+
 /**
  * 53. Maximum Subarray
  * https://leetcode.com/problems/maximum-subarray/
@@ -8,7 +11,7 @@ package easy
  * A subarray is a contiguous part of an array.
  */
 
-class Easy53 {
+class Easy53: ArraysTopic, DynamicProgrammingTopic {
 
     fun maxSubArray(nums: IntArray): Int {
         var soFar = Int.MIN_VALUE

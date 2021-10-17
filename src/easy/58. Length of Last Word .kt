@@ -1,5 +1,7 @@
 package easy
 
+import StringTopic
+
 /**
  * 58. Length of Last Word
  * https://leetcode.com/problems/length-of-last-word/
@@ -8,7 +10,7 @@ package easy
  * A word is a maximal substring consisting of non-space characters only.
  */
 
-class Easy58 {
+class Easy58: StringTopic {
 
     fun lengthOfLastWord(s: String): Int {
         val targetStr = s.trim()

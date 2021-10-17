@@ -1,5 +1,8 @@
 package easy
 
+import DynamicProgrammingTopic
+import MathTopic
+
 /**
  * 70. Climbing Stairs
  * https://leetcode.com/problems/climbing-stairs/
@@ -8,7 +11,7 @@ package easy
  * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
  */
 
-class Easy70 {
+class Easy70: MathTopic, DynamicProgrammingTopic {
 
     var map: IntArray? = null
 

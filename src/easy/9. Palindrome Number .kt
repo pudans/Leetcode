@@ -1,5 +1,7 @@
 package easy
 
+import MathTopic
+
 /**
  * 9. Palindrome Number
  * https://leetcode.com/problems/palindrome-number/
@@ -8,7 +10,7 @@ package easy
  * An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
  */
 
-class Easy9 {
+class Easy9: MathTopic{
 
     fun isPalindrome(x: Int): Boolean {
         val str = x.toString()

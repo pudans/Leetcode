@@ -1,5 +1,8 @@
 package easy
 
+import StringTopic
+import TwoPointersTopic
+
 /**
  * 28. Implement strStr()
  * https://leetcode.com/problems/implement-strstr/
@@ -11,7 +14,7 @@ package easy
  * For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
  */
 
-class Solution28 {
+class Solution28: TwoPointersTopic, StringTopic {
 
     fun strStr(haystack: String, needle: String): Int {
         if (needle.isEmpty()) return 0

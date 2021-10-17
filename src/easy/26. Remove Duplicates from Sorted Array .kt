@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import TwoPointersTopic
+
 /**
  * 26. Remove Duplicates from Sorted Array
  * https://leetcode.com/problems/remove-duplicates-from-sorted-array/
@@ -14,7 +17,7 @@ package easy
  * Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
  */
 
-class Easy26 {
+class Easy26: ArraysTopic, TwoPointersTopic {
 
     fun removeDuplicates(nums: IntArray): Int {
         if (nums.size < 2) return 1

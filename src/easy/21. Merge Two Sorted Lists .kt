@@ -1,5 +1,7 @@
 package easy
 
+import LinkedListTopic
+import RecursionTopic
 import utils.ListNode
 import utils.toStringList
 
@@ -10,7 +12,7 @@ import utils.toStringList
  * Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.
  */
 
-class Easy21 {
+class Easy21: LinkedListTopic, RecursionTopic {
 
     fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
         if (l1 != null && l2 != null) {

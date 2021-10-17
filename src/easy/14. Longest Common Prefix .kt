@@ -1,5 +1,7 @@
 package easy
 
+import StringTopic
+
 /**
  * 14. Longest Common Prefix
  * https://leetcode.com/problems/longest-common-prefix/
@@ -8,7 +10,7 @@ package easy
  * If there is no common prefix, return an empty string "".
  */
 
-class Easy14 {
+class Easy14: StringTopic {
 
     fun longestCommonPrefix(strs: Array<String>): String {
         if (strs.isEmpty()) return ""

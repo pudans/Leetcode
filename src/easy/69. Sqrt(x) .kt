@@ -1,5 +1,8 @@
 package easy
 
+import BinarySearchTopic
+import MathTopic
+
 /**
  * 69. Sqrt(x)
  * https://leetcode.com/problems/sqrtx/
@@ -9,7 +12,7 @@ package easy
  * Note: You are not allowed to use any built-in exponent function or operator, such as pow(x, 0.5) or x ** 0.5.
  */
 
-class Easy69 {
+class Easy69: MathTopic, BinarySearchTopic {
 
     fun mySqrt(x: Int): Int {
         if (x == 0) return 0

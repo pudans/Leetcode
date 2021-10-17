@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import HeapTopic
+
 /**
  * 1046. Last Stone Weight
  * https://leetcode.com/problems/last-stone-weight/
@@ -12,7 +15,7 @@ package easy
  * Return the smallest possible weight of the left stone. If there are no stones left, return 0.
  */
 
-class Easy1046 {
+class Easy1046: ArraysTopic, HeapTopic {
 
     lateinit var stoneList: MutableList<Int>
 

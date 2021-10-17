@@ -1,5 +1,7 @@
 package easy
 
+import StackTopic
+import StringTopic
 import java.util.*
 
 /**
@@ -13,7 +15,7 @@ import java.util.*
  * Open brackets must be closed in the correct order.
  */
 
-class Easy20 {
+class Easy20: StringTopic, StackTopic {
 
     fun isValid(s: String): Boolean {
         if (s.isEmpty()) return true

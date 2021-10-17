@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import HashTableTopic
+
 /**
  * 1. Two Sum
  * https://leetcode.com/problems/two-sum/
@@ -10,7 +13,7 @@ package easy
  *
  */
 
-class Easy1 {
+class Easy1: ArraysTopic, HashTableTopic {
 
     fun twoSum(nums: IntArray, target: Int): IntArray {
         for (i in 0 until nums.size - 1) {

@@ -1,5 +1,6 @@
 package easy
 
+import LinkedListTopic
 import utils.ListNode
 
 /**
@@ -9,7 +10,7 @@ import utils.ListNode
  * Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
  */
 
-class Easy83 {
+class Easy83: LinkedListTopic {
 
     fun deleteDuplicates(head: ListNode?): ListNode? {
         var currentNode = head

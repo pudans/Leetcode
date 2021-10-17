@@ -1,5 +1,9 @@
 package easy
 
+import HashTableTopic
+import MathTopic
+import StringTopic
+
 /**
  * 13. Roman to Integer
  * https://leetcode.com/problems/roman-to-integer/
@@ -17,7 +21,7 @@ package easy
  * Given a roman numeral, convert it to an integer.
  */
 
-class Easy13 {
+class Easy13: HashTableTopic, MathTopic, StringTopic {
 
     fun romanToInt(s: String): Int {
         var result = 0

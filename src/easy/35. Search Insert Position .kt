@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import BinarySearchTopic
+
 /**
  * 35. Search Insert Position
  * https://leetcode.com/problems/search-insert-position/
@@ -9,7 +12,7 @@ package easy
  * You must write an algorithm with O(log n) runtime complexity.
  */
 
-class Easy35 {
+class Easy35: ArraysTopic, BinarySearchTopic {
 
     fun searchInsert(nums: IntArray, target: Int): Int {
         var result = 0

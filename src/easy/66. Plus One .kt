@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import MathTopic
+
 /**
  * 66. Plus One
  * https://leetcode.com/problems/plus-one/
@@ -9,7 +12,7 @@ package easy
  * Increment the large integer by one and return the resulting array of digits.
  */
 
-class Easy66 {
+class Easy66: ArraysTopic, MathTopic {
 
     fun plusOne(digits: IntArray): IntArray {
         var index = digits.size - 1

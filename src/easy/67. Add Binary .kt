@@ -1,5 +1,9 @@
 package easy
 
+import BitManipulationTopic
+import MathTopic
+import StringTopic
+
 /**
  * 67. Add Binary
  * https://leetcode.com/problems/add-binary/
@@ -7,7 +11,7 @@ package easy
  * Given two binary strings a and b, return their sum as a binary string.
  */
 
-class Easy67 {
+class Easy67: MathTopic, StringTopic, BitManipulationTopic {
 
     fun addBinary(a: String, b: String): String {
         var result = ""

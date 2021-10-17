@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import TwoPointersTopic
+
 /**
  * 27. Remove Element
  * https://leetcode.com/problems/remove-element/
@@ -11,7 +14,7 @@ package easy
  * Return k after placing the final result in the first k slots of nums.
  */
 
-class Easy27 {
+class Easy27: ArraysTopic, TwoPointersTopic {
 
     fun removeElement(nums: IntArray, `val`: Int): Int {
         var position = 0
