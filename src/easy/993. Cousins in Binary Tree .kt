@@ -18,47 +18,25 @@ class Easy993 {
 
     fun isCousins(root: TreeNode?, x: Int, y: Int): Boolean {
         root ?: return false
-        var xi = 0
-        var yi = 0
-
-        val list = ArrayList<Int>()
-
-        val queue: Queue<TreeNode?> = LinkedList()
-        queue.add(root)
-        while (queue.isNotEmpty()) {
-            val node = queue.poll()
-            val value = node?.`val` ?: -1
-            if (value == x) xi = list.size
-            if (value == y) yi = list.size
-            if (xi != 0 && yi != 0) break
-            list.add(value)
-            if (node != null) {
-                queue.add(node.left)
-                queue.add(node.right)
+        val left = findLevel(root, x) ?: return false
+        val right = findLevel(root, y) ?: return false
+        if (left.size == right.size) {
+            if (left.size <= 1) return false
+            if (left.last() == right.last()) return false
+            for (i in (left.size - 2) downTo 0) {
+                if (left[i] == right[i]) return true
             }
         }
-
-        println(xi)
-        println(yi)
-
-        return when {
-
-            xi >= 63 + 32 -> yi >= 63 && yi < 63 + 32
-            xi >= 63 -> yi >= 63 + 32
-
-            xi >= 31 + 16 -> yi >= 31 && yi < 31 + 16
-            xi >= 31 -> yi >= 31 + 16
-
-            xi >= 14 + 8 -> yi >= 14 && yi < 14 + 8
-            xi >= 14 -> yi >= 14 + 8
-
-            xi >= 7 + 4 -> yi >= 7 && yi < 7 + 4
-            xi >= 7 -> yi >= 7 + 4
-
-            xi >= 3 + 2 -> yi >= 3 && yi < 3 + 2
-            xi >= 3 -> yi >= 3 + 2
-
-            else -> return false
-        }
+        return false
     }
+
+    private fun findLevel(node: TreeNode?, target: Int, list: List<Int> = emptyList()): List<Int>? =
+        when {
+            node == null -> null
+            node.`val` == target -> list
+            else -> {
+                val newArray = ArrayList(list).also { it.add(node.`val`) }
+                findLevel(node.left, target, newArray) ?: findLevel(node.right, target, newArray)
+            }
+        }
 }
