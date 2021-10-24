@@ -38,3 +38,7 @@ interface BacktrackingTopic
 interface MatrixTopic
 
 interface SortingTopic
+
+interface BinaryTreeTopic
+
+interface DFSTopic
