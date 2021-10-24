@@ -1,5 +1,6 @@
 package medium
 
+import ArraysTopic
 import BinarySearchTopic
 
 /**
@@ -14,7 +15,7 @@ import BinarySearchTopic
  * You must write an algorithm with O(log n) runtime complexity.
  */
 
-class Medium33: BinarySearchTopic {
+class Medium33: BinarySearchTopic, ArraysTopic {
 
     fun search(nums: IntArray, target: Int): Int {
         if (nums.isEmpty()) return -1

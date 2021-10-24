@@ -1,9 +1,17 @@
 package medium
 
-import java.util.*
-import kotlin.collections.ArrayList
+import BacktrackingTopic
+import DynamicProgrammingTopic
+import StringTopic
 
-class Solution22 {
+/**
+ * 22. Generate Parentheses
+ * https://leetcode.com/problems/generate-parentheses/
+ *
+ * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ */
+
+class Medium22: StringTopic, BacktrackingTopic, DynamicProgrammingTopic {
 
     private val result = ArrayList<String>()
 
@@ -20,4 +28,9 @@ class Solution22 {
         if (open < max) backtrack("$cur(", open + 1, close, max)
         if (close < open) backtrack("$cur)", open, close + 1, max)
     }
+}
+
+fun main() {
+    println(Medium22().generateParenthesis(3))
+    println(Medium22().generateParenthesis(1))
 }

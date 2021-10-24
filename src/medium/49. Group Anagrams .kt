@@ -1,6 +1,19 @@
 package medium
 
-class Solution49 {
+import HashTableTopic
+import SortingTopic
+import StringTopic
+
+/**
+ * 49. Group Anagrams
+ * https://leetcode.com/problems/group-anagrams/
+ *
+ * Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+ * An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+ * typically using all the original letters exactly once.
+ */
+
+class Medium49: HashTableTopic, StringTopic, SortingTopic {
 
     fun groupAnagrams(strs: Array<String>): List<List<String>> {
         val result = ArrayList<List<String>>()
@@ -32,33 +45,20 @@ class Solution49 {
         return result
     }
 
-//    fun isAnagram(first: String, second: String): Boolean =
-//            when {
-//                first.length != second.length -> false
-//                first.isEmpty() -> true
-//                first.length == 1 -> first[0].toByte() == second[0].toByte()
-//                else -> {
-//                    var result0 = 0
-//                    for (i in first.indices) {
-//                        result0 = result0 +
-//                                first[i].toByte() -
-//                                second[i].toByte()
-//                    }
-//                    result0 == 0
-//                }
-//            }
-
-    fun isAnagram(s: String, t: String): Boolean {
-        if (s.length != t.length) {
-            return false
-        }
+    private fun isAnagram(s: String, t: String): Boolean {
+        if (s.length != t.length) return false
         var sum1: Double = 0.0
         var sum2: Double = 0.0
         for (i in s.indices) {
-            sum1 += Math.sin (s[i].toDouble())
-            sum2 += Math.sin (t[i].toDouble())
+            sum1 += Math.sin (s[i].code.toDouble())
+            sum2 += Math.sin (t[i].code.toDouble())
         }
         return Math.abs(sum1 - sum2) < 0.0000000001
     }
+}
 
+fun main() {
+    println(Medium49().groupAnagrams(arrayOf("eat","tea","tan","ate","nat","bat")))
+    println(Medium49().groupAnagrams(arrayOf("")))
+    println(Medium49().groupAnagrams(arrayOf("a")))
 }

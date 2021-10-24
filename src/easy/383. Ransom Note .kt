@@ -1,7 +1,5 @@
 package easy
 
-import medium.Easy38
-
 /**
  * 383. Ransom Note
  * https://leetcode.com/problems/ransom-note/

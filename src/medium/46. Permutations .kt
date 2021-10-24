@@ -1,8 +1,16 @@
 package medium
 
-import kotlin.collections.ArrayList
+import ArraysTopic
+import BacktrackingTopic
 
-class Solution46 {
+/**
+ * 46. Permutations
+ * https://leetcode.com/problems/permutations/
+ *
+ * Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+ */
+
+class Medium46: ArraysTopic, BacktrackingTopic {
 
     fun permute(nums: IntArray): List<List<Int>> {
         val result = ArrayList<List<Int>>()
@@ -13,7 +21,6 @@ class Solution46 {
     fun generate(result: ArrayList<List<Int>>, nums: IntArray, l: Int, r: Int) {
         if (l == r) {
             result.add(nums.toList())
-            // println("${result.size} ${nums.toList()}")
             return
         } else {
             var temp = 0
@@ -30,4 +37,10 @@ class Solution46 {
             }
         }
     }
+}
+
+fun main() {
+    println(Medium46().permute(intArrayOf(1,2,3)))
+    println(Medium46().permute(intArrayOf(0,1)))
+    println(Medium46().permute(intArrayOf(1)))
 }
