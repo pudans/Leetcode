@@ -42,3 +42,5 @@ interface SortingTopic
 interface BinaryTreeTopic
 
 interface DFSTopic
+
+interface CombinatoricsTopic

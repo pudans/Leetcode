@@ -21,7 +21,7 @@ class Solution221 {
 
         @JvmStatic
         fun main(args: Array<String>) {
-            val dd = Medium222().maximalSquare(
+            val dd = Solution221().maximalSquare(
                     arrayOf(
                             charArrayOf('1','0','1','0','0'),
                             charArrayOf('1','0','1','1','1'),

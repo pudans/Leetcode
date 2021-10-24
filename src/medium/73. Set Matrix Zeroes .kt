@@ -1,8 +1,20 @@
 package medium
 
-class Solution73 {
+import ArraysTopic
+import HashTableTopic
+import MatrixTopic
 
-    fun setZeroes(matrix: Array<IntArray>): Unit {
+/**
+ * 73. Set Matrix Zeroes
+ * https://leetcode.com/problems/set-matrix-zeroes/
+ *
+ * Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's, and return the matrix.
+ * You must do it in place.
+ */
+
+class Medium73: ArraysTopic, HashTableTopic, MatrixTopic {
+
+    fun setZeroes(matrix: Array<IntArray>) {
         val hash = HashSet<Int>()
         for (i in matrix.indices) {
             for (j in matrix.indices) {
