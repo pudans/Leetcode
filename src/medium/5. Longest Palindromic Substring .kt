@@ -1,35 +1,39 @@
 package medium
 
-class Solution5 {
+import DynamicProgrammingTopic
+import StringTopic
 
-    private lateinit var str: String
+/**
+ * 5. Longest Palindromic Substring
+ * https://leetcode.com/problems/longest-palindromic-substring/
+ *
+ * Given a string s, return the longest palindromic substring in s.
+ */
 
-    fun longestPalindrome(s: String): String {
-        str = s
-        if (s.length == 1) {
-            return s
+class Medium5: DynamicProgrammingTopic, StringTopic {
+
+    fun longestPalindrome(str: String): String {
+        if (str.length == 1) {
+            return str
         }
         var maxResult = 0
         var result = ""
-        for (i in 1 until s.length) {
-            val curUnevenMaxResult = getUnevenMaxPalindrome(i)
-            val curEvenMaxResult = getEvenMaxPalindrome(i)
-
+        for (i in 1 until str.length) {
+            val curUnevenMaxResult = getUnevenMaxPalindrome(str, i)
+            val curEvenMaxResult = getEvenMaxPalindrome(str, i)
             if (curUnevenMaxResult > maxResult && curUnevenMaxResult > curEvenMaxResult) {
                 maxResult = curUnevenMaxResult
                 result = str.substring(i - curUnevenMaxResult / 2, i + 1 + curUnevenMaxResult / 2)
             }
-
             if (curEvenMaxResult > maxResult && curEvenMaxResult > curUnevenMaxResult) {
                 maxResult = curEvenMaxResult
                 result = str.substring(i - curEvenMaxResult / 2, i + curEvenMaxResult / 2)
             }
-            println("${str[i]} $result")
         }
         return result
     }
 
-    fun getUnevenMaxPalindrome(i: Int): Int {
+    private fun getUnevenMaxPalindrome(str: String, i: Int): Int {
         var start = i - 1
         var end = i + 1
         var result = 1
@@ -45,7 +49,7 @@ class Solution5 {
         return result
     }
 
-    fun getEvenMaxPalindrome(i: Int): Int {
+    private fun getEvenMaxPalindrome(str: String, i: Int): Int {
         var start = i - 1
         var end = i
         var result = 0
@@ -60,13 +64,11 @@ class Solution5 {
         }
         return result
     }
+}
 
-    fun isPalindrome(str: String): Boolean {
-        for (i in 0 until (str.length / 2)) {
-            if (str[i] != str[str.length - 1 - i]) {
-                return false
-            }
-        }
-        return true
-    }
+fun main() {
+    println(Medium5().longestPalindrome("babad"))
+    println(Medium5().longestPalindrome("cbbd"))
+    println(Medium5().longestPalindrome("bb"))
+    println(Medium5().longestPalindrome("ac"))
 }

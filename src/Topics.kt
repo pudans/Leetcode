@@ -28,3 +28,19 @@ interface DynamicProgrammingTopic
 interface BitManipulationTopic
 
 interface TreeTopic
+
+interface SlidingWindowTopic
+
+interface GreedyTopic
+
+interface BacktrackingTopic
+
+interface MatrixTopic
+
+interface SortingTopic
+
+interface BinaryTreeTopic
+
+interface DFSTopic
+
+interface CombinatoricsTopic

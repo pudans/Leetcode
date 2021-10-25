@@ -1,36 +1,27 @@
 package medium
 
-class Solution75 {
+import ArraysTopic
+import SortingTopic
+import TwoPointersTopic
 
-    // not worked
+/**
+ * 75. Sort Colors
+ * https://leetcode.com/problems/sort-colors/
+ *
+ * Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent,
+ * with the colors in the order red, white, and blue.
+ * We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+ * You must solve this problem without using the library's sort function.
+ */
 
-    fun sortColors2(nums: IntArray): Unit {
-        var zeros = 0
-        var ones = 0
-        var twos = 0
-        nums.forEach {
-            when(it) {
-                0 -> zeros++
-                1 -> ones++
-                2 -> twos++
-            }
-        }
-        nums.forEachIndexed { index, i ->
-            when {
-                index < zeros -> nums[index] = 0
-                index < zeros + ones -> nums[index] = 1
-                index < zeros + ones + twos -> nums[index] = 2
-            }
-        }
-    }
+class Medium75: ArraysTopic, TwoPointersTopic, SortingTopic {
 
-    fun sortColors(nums: IntArray): Unit {
+    fun sortColors(nums: IntArray) {
         var zeros = -1
         var ones = -1
         var twos = -1
 
         nums.forEachIndexed { index, i ->
-
             if (i == 0) {
                 if (zeros == -1) {
                     zeros = 0
@@ -72,15 +63,19 @@ class Solution75 {
                 }
                 nums[twos] = 2
             }
-
             nums[index] = when {
                 twos != -1 -> 2
                 ones != -1 -> 1
                 else -> 0
             }
-
             println("$zeros $ones $twos ${nums.toList()} ")
-
         }
     }
+}
+
+fun main() {
+    println(Medium75().sortColors(intArrayOf(2,0,2,1,1,0)))
+    println(Medium75().sortColors(intArrayOf(2,0,1)))
+    println(Medium75().sortColors(intArrayOf(0)))
+    println(Medium75().sortColors(intArrayOf(1)))
 }

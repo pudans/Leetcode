@@ -1,18 +1,20 @@
 package medium
 
-class Solution62 {
+import CombinatoricsTopic
+import DynamicProgrammingTopic
+import MathTopic
 
-//    fun uniquePaths(m: Int, n: Int): Int {
-//        return getPath(m,n,0,0) + 1
-//    }
-//
-//    private fun getPath(m: Int, n: Int, currM: Int, currN: Int): Int {
-//        if (currM < m - 1 && currN < n - 1) {
-//            return 1 + getPath(m,n,currM + 1, currN) + getPath(m,n,currM, currN + 1)
-//        } else {
-//            return 0
-//        }
-//    }
+/**
+ * 62. Unique Paths
+ * https://leetcode.com/problems/unique-paths/
+ *
+ * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+ * The robot can only move either down or right at any point in time.
+ * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+ * How many possible unique paths are there?
+ */
+
+class Medium62: MathTopic, DynamicProgrammingTopic, CombinatoricsTopic {
 
     fun uniquePaths(m: Int, n: Int): Int {
         val array = Array(m + 1) { IntArray(n + 1) { 0 } }
@@ -24,13 +26,11 @@ class Solution62 {
         }
         return array[m][n];
     }
+}
 
-    companion object {
-
-        @JvmStatic
-        fun main(args: Array<String>) {
-            val dd = Solution62().uniquePaths(7,3)
-            println(dd)
-        }
-    }
+fun main() {
+    println(Medium62().uniquePaths(3,7))
+    println(Medium62().uniquePaths(7,3))
+    println(Medium62().uniquePaths(3,3))
+    println(Medium62().uniquePaths(3,2))
 }
