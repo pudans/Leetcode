@@ -11,16 +11,9 @@ import utils.TreeNode
 
 class Easy226 {
 
-    fun invertTree(root: TreeNode?): TreeNode? {
-        swap(root)
-        return root
-    }
-
-    private fun swap(root: TreeNode?) {
-        val temp = root?.left
-        root?.left = root?.right
-        root?.right = temp
-        root?.left?.let { swap(it) }
-        root?.right?.let { swap(it) }
+    fun invertTree(root: TreeNode?): TreeNode? = root?.apply {
+        left = right.also { right = left }
+        invertTree(left)
+        invertTree(right)
     }
 }
