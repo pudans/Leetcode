@@ -17,6 +17,28 @@ import TwoPointersTopic
 class Medium75: ArraysTopic, TwoPointersTopic, SortingTopic {
 
     fun sortColors(nums: IntArray) {
+        var zeros = 0
+        var ones = 0
+        var twos = 0
+
+        nums.forEach {
+            when (it) {
+                0 -> zeros++
+                1 -> ones++
+                else -> twos++
+            }
+        }
+
+        for (i in nums.indices) {
+            nums[i] = when {
+                i < zeros -> 0
+                i < zeros + ones -> 1
+                else -> 2
+            }
+        }
+    }
+
+    fun sortColors1(nums: IntArray) {
         var zeros = -1
         var ones = -1
         var twos = -1
@@ -74,8 +96,19 @@ class Medium75: ArraysTopic, TwoPointersTopic, SortingTopic {
 }
 
 fun main() {
-    println(Medium75().sortColors(intArrayOf(2,0,2,1,1,0)))
-    println(Medium75().sortColors(intArrayOf(2,0,1)))
-    println(Medium75().sortColors(intArrayOf(0)))
-    println(Medium75().sortColors(intArrayOf(1)))
+    var array = intArrayOf(2,0,2,1,1,0)
+    Medium75().sortColors(array)
+    println(array.toList())
+
+    array = intArrayOf(2,0,1)
+    Medium75().sortColors(array)
+    println(array.toList())
+
+    array = intArrayOf(0)
+    Medium75().sortColors(array)
+    println(array.toList())
+
+    array = intArrayOf(1)
+    Medium75().sortColors(array)
+    println(array.toList())
 }
