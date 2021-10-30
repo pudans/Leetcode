@@ -44,3 +44,5 @@ interface BinaryTreeTopic
 interface DFSTopic
 
 interface CombinatoricsTopic
+
+interface BFSTopic
