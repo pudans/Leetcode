@@ -17,6 +17,8 @@ interface StackTopic
 
 interface LinkedListTopic
 
+interface DoubleLinkedListTopic
+
 interface RecursionTopic
 
 interface TwoPointersTopic

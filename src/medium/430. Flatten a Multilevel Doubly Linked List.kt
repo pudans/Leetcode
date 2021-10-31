@@ -1,7 +1,8 @@
 package medium
 
-import ArraysTopic
-import SortingTopic
+import DFSTopic
+import DoubleLinkedListTopic
+import LinkedListTopic
 import java.util.*
 
 /**
@@ -14,7 +15,7 @@ import java.util.*
  * Flatten the list so that all the nodes appear in a single-level, doubly linked list. You are given the head of the first level of the list.
  */
 
-class Medium430: ArraysTopic, SortingTopic {
+class Medium430: LinkedListTopic, DFSTopic, DoubleLinkedListTopic {
 
     class Node(var `val`: Int) {
         var prev: Node? = null
