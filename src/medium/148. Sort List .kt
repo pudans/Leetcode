@@ -1,19 +1,19 @@
 package medium
 
+import LinkedListTopic
+import SortingTopic
+import TwoPointersTopic
 import utils.ListNode
 
-class Solution148 {
-    // Printing function
-    fun printList(head: ListNode?) {
-        var ptr = head
-        while (ptr != null) {
-            print(ptr.`val`.toString() + " -> ")
-            ptr = ptr.next
-        }
-        println("null")
-    }
+/**
+ * 148. Sort List
+ * https://leetcode.com/problems/sort-list/
+ *
+ * Given the head of a linked list, return the list after sorting it in ascending order.
+ */
 
-    // merging two linked list
+class Medium148: LinkedListTopic, TwoPointersTopic, SortingTopic {
+
     fun merge(lst1: ListNode?, lst2: ListNode?): ListNode? {
         if (lst1 == null) return lst2
         if (lst2 == null) return lst1

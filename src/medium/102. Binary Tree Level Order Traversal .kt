@@ -1,23 +1,24 @@
 package medium
 
+import BFSTopic
+import BinaryTreeTopic
+import TreeTopic
 import utils.TreeNode
 
-class Solution102 {
+/**
+ * 102. Binary Tree Level Order Traversal
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/
+ *
+ * Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+ */
+
+class Medium102: TreeTopic, BFSTopic, BinaryTreeTopic {
 
     private val result = ArrayList<ArrayList<Int>>()
 
     fun levelOrder(root: TreeNode?): List<List<Int>> {
-        if (root == null) {
-            return result
-        }
-
-        val dd = ArrayList<Int>(1)
-        dd.add(root.`val`)
-        result.add(dd)
-
-        root.left?.let { traverse(1, it) }
-        root.right?.let { traverse(1, it) }
-
+        root ?: return emptyList()
+        traverse(0, root)
         return result
     }
 
@@ -32,6 +33,5 @@ class Solution102 {
 
         root.left?.let { traverse(level + 1, it) }
         root.right?.let { traverse(level + 1, it) }
-
     }
 }

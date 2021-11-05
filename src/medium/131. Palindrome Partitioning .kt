@@ -1,10 +1,17 @@
 package medium
 
-import kotlin.collections.ArrayList
+/**
+ * 131. Palindrome Partitioning
+ * https://leetcode.com/problems/palindrome-partitioning/
+ *
+ * Given a string s, partition s such that every substring of the partition is a palindrome.
+ * Return all possible palindrome partitioning of s.
+ * A palindrome string is a string that reads the same backward as forward.
+ */
 
-class Solution131 {
+class Medium131 {
 
-    fun partition(s: String): List<List<String>>? {
+    fun partition(s: String): List<List<String>> {
         val res = ArrayList<List<String>>()
         exploreAndBacktrack(s, 0, res, ArrayList())
         return res
@@ -33,4 +40,9 @@ class Solution131 {
         }
         return true
     }
+}
+
+fun main() {
+    println(Medium131().partition("aab"))
+    println(Medium131().partition("a"))
 }

@@ -48,3 +48,5 @@ interface DFSTopic
 interface CombinatoricsTopic
 
 interface BFSTopic
+
+interface TrieTopic

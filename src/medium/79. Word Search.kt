@@ -1,6 +1,19 @@
 package medium
 
-class Solution79 {
+import ArraysTopic
+import BacktrackingTopic
+import MatrixTopic
+
+/**
+ * 79. Word Search
+ * https://leetcode.com/problems/word-search/
+ *
+ * Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+ * The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring.
+ * The same letter cell may not be used more than once.
+ */
+
+class Medium79: ArraysTopic, BacktrackingTopic, MatrixTopic {
 
     lateinit var board: Array<CharArray>
     lateinit var word: String
@@ -9,7 +22,7 @@ class Solution79 {
         this.board = board
         this.word = word
 
-        val firstChar = word[0]
+        val firstChar = word.first()
 
         for (i in board.indices) {
             for (j in board[0].indices) {
@@ -17,8 +30,7 @@ class Solution79 {
                     if (word.length == 1) {
                         return true
                     } else {
-                        val finded = find(i, j, 1, HashSet())
-                        if (finded) {
+                        if (find(i, j, 1, HashSet())) {
                             return true
                         }
                     }
@@ -57,8 +69,6 @@ class Solution79 {
         }
     }
 
-    fun isTrue(i: Int, j: Int, index: Int, set: HashSet<Int>): Boolean {
-        return !set.contains(i * 1000 + j)
-                && board[i][j] == word[index]
-    }
+    fun isTrue(i: Int, j: Int, index: Int, set: HashSet<Int>): Boolean =
+            !set.contains(i * 1000 + j) && board[i][j] == word[index]
 }
