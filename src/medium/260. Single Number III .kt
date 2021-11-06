@@ -1,7 +1,7 @@
 package medium
 
-import DynamicProgrammingTopic
-import StringTopic
+import ArraysTopic
+import BitManipulationTopic
 
 /**
  * 260. Single Number III
@@ -12,7 +12,7 @@ import StringTopic
  * You must write an algorithm that runs in linear runtime complexity and uses only constant extra space.
  */
 
-class Medium260: DynamicProgrammingTopic, StringTopic {
+class Medium260 : ArraysTopic, BitManipulationTopic {
 
     fun singleNumber(nums: IntArray): IntArray {
         val set = HashSet<Int>()
@@ -27,8 +27,8 @@ class Medium260: DynamicProgrammingTopic, StringTopic {
 }
 
 fun main() {
-    println(Medium260().singleNumber(intArrayOf(1,2,1,3,2,5)).toList())
-    println(Medium260().singleNumber(intArrayOf(-1,0)).toList())
-    println(Medium260().singleNumber(intArrayOf(0,1)).toList())
+    println(Medium260().singleNumber(intArrayOf(1, 2, 1, 3, 2, 5)).toList())
+    println(Medium260().singleNumber(intArrayOf(-1, 0)).toList())
+    println(Medium260().singleNumber(intArrayOf(0, 1)).toList())
 
 }
