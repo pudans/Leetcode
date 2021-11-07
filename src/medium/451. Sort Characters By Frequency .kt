@@ -1,9 +1,7 @@
 package medium
 
-import java.lang.StringBuilder
-import java.util.*
-import kotlin.collections.HashMap
-
+import HashTableTopic
+import HeapTopic
 
 /**
  * 451. Sort Characters By Frequency
@@ -14,7 +12,7 @@ import kotlin.collections.HashMap
  * Return the sorted string. If there are multiple answers, return any of them.
  */
 
-class Medium451 {
+class Medium451 : HashTableTopic, HeapTopic {
 
     fun frequencySort(s: String): String {
         val map = HashMap<Char, Int>(s.length)
