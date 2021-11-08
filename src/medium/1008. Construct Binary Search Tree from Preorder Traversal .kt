@@ -1,5 +1,8 @@
 package medium
 
+import BinarySearchTopic
+import BinaryTreeTopic
+import StackTopic
 import utils.TreeNode
 
 /**
@@ -13,7 +16,7 @@ import utils.TreeNode
  * A preorder traversal of a binary tree displays the value of the node first, then traverses Node.left, then traverses Node.right.
  */
 
-class Medium105 {
+class Medium1008 : StackTopic, BinarySearchTopic, BinaryTreeTopic {
 
     fun bstFromPreorder(preorder: IntArray): TreeNode? {
         if (preorder.isEmpty()) return null

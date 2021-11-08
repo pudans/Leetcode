@@ -17,6 +17,8 @@ interface StackTopic
 
 interface LinkedListTopic
 
+interface DoubleLinkedListTopic
+
 interface RecursionTopic
 
 interface TwoPointersTopic
@@ -46,3 +48,5 @@ interface DFSTopic
 interface CombinatoricsTopic
 
 interface BFSTopic
+
+interface TrieTopic

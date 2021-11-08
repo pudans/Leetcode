@@ -1,5 +1,7 @@
 package medium
 
+import DynamicProgrammingTopic
+
 /**
  * 309. Best Time to Buy and Sell Stock with Cooldown
  * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
@@ -11,7 +13,7 @@ package medium
  * Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
  */
 
-class Medium309 {
+class Medium309 : DynamicProgrammingTopic {
 
     lateinit var prices: IntArray
     var len = 0
@@ -41,6 +43,6 @@ class Medium309 {
 }
 
 fun main() {
-    println(Medium309().maxProfit(intArrayOf(1,2,3,0,2)))
+    println(Medium309().maxProfit(intArrayOf(1, 2, 3, 0, 2)))
     println(Medium309().maxProfit(intArrayOf(1)))
 }

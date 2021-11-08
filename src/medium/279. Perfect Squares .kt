@@ -1,5 +1,8 @@
 package medium
 
+import BFSTopic
+import DynamicProgrammingTopic
+
 /**
  * 279. Perfect Squares
  * https://leetcode.com/problems/perfect-squares/
@@ -9,13 +12,14 @@ package medium
  * For example, 1, 4, 9, and 16 are perfect squares while 3 and 11 are not.
  */
 
-class Medium279 {
+class Medium279 : DynamicProgrammingTopic, BFSTopic {
 
     fun numSquares(n: Int): Int {
         if (n <= 3) return n
         val dp = IntArray(n + 1)
         for (i in 1..n) {
-            if (i <= 3) { dp[i] = i; continue; }
+            if (i <= 3) {
+                dp[i] = i; continue; }
             dp[i] = Int.MAX_VALUE
             var j = 1
             while (j * j <= i) {

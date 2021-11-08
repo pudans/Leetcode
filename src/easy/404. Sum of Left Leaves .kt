@@ -11,23 +11,9 @@ import utils.TreeNode
 
 class Easy404 {
 
-    var sum = 0
-
-    fun sumOfLeftLeaves(root: TreeNode?): Int {
-        calculate(root)
-        return sum
-    }
-
-    private fun calculate(root: TreeNode?) {
-        root?.let { node ->
-            node.left?.let {
-                if (it.left == null && it.right == null) {
-                    sum += it.`val`
-                } else {
-                    calculate(it)
-                }
-            }
-            node.right?.let { calculate(it) }
-        }
+    fun sumOfLeftLeaves(root: TreeNode?, isLeft: Boolean = false): Int {
+        root ?: return 0
+        if (isLeft && root.left == null && root.right == null) return root.`val`
+        return sumOfLeftLeaves(root.left, isLeft = true) + sumOfLeftLeaves(root.right)
     }
 }
