@@ -19,10 +19,7 @@ For example, there won't be input like 3a or 2[4].
 class Medium394 : StackTopic, StringTopic {
 
     fun decodeString(str: String): String {
-        println(str)
-
         val result = StringBuilder()
-
         var number = 0
         var i = 0
         while (i < str.length) {
@@ -30,18 +27,13 @@ class Medium394 : StackTopic, StringTopic {
                 str[i].isDigit() && number != 0 -> number = number * 10 + (str[i] - '0')
                 str[i].isDigit() -> number = str[i] - '0'
                 str[i] == '[' -> {
-                    val closeBreak = findCloseBreak(i, str)
-                    val substring = str.substring(i + 1, closeBreak)
-                    val detekt = decodeString(substring)
-                    println("catch! $number $substring $detekt")
+                    val closeBreak = findCloseBreak(i + 1, str)
+                    val detekt = decodeString(str.substring(i + 1, closeBreak))
                     for (j in 1..number) {
                         result.append(detekt)
                     }
                     i = closeBreak
                     number = 0
-                }
-                str[i] == ']' -> {
-                    println("error asd")
                 }
                 else -> result.append(str[i])
             }
@@ -51,20 +43,22 @@ class Medium394 : StackTopic, StringTopic {
         return result.toString()
     }
 
-    fun findCloseBreak(start: Int, str: String): Int {
-        var openedBreakes = 0
-        for (i in (start + 1) until str.length) {
+    private fun findCloseBreak(start: Int, str: String): Int {
+        var opened = 0
+        for (i in start until str.length) {
             when {
-                str[i] == '[' -> openedBreakes++
-                str[i] == ']' && openedBreakes != 0 -> openedBreakes--
+                str[i] == '[' -> opened++
+                str[i] == ']' && opened != 0 -> opened--
                 str[i] == ']' -> return i
             }
         }
-        println("error vvv")
         return -1
     }
 }
 
 fun main() {
+    println(Medium394().decodeString("3[a]2[bc]"))
     println(Medium394().decodeString("3[a2[c]]"))
+    println(Medium394().decodeString("2[abc]3[cd]ef"))
+    println(Medium394().decodeString("abc3[cd]xyz"))
 }
