@@ -16,13 +16,8 @@ import GreedyTopic
 
 class Medium122: ArraysTopic, GreedyTopic, DynamicProgrammingTopic {
 
-    fun maxProfit(prices: IntArray): Int {
-        var result = 0
-        for (i in 1 until prices.size) {
-            result += Math.max(0, prices[i] - prices[i - 1])
-        }
-        return result
-    }
+    fun maxProfit(prices: IntArray): Int =
+        prices.toList().windowed(2).sumBy { (it.last() - it.first()).coerceAtLeast(0) }
 }
 
 fun main() {
