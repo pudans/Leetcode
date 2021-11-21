@@ -5,16 +5,14 @@ import TreeTopic
 import utils.TreeNode
 
 /**
- * 105. Construct Binary Tree from Preorder and Inorder Traversal
+ * 106. Construct Binary Tree from Inorder and Postorder Traversal
  * https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  *
- * Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree
- * and inorder is the inorder traversal of the same tree, construct and return the binary tree.
- *
- * BULLSHIT
+Given two integer arrays inorder and postorder where inorder is the inorder traversal of a binary tree and postorder is the postorder traversal of the same tree, construct and return the binary tree.
+BULLSHIT
  */
 
-class Medium105 : TreeTopic, BinaryTreeTopic {
+class Medium106 : TreeTopic, BinaryTreeTopic {
 
     fun buildTree(
             inorder: IntArray, postorder: IntArray,
