@@ -23,7 +23,7 @@ class Medium378 : BinaryTreeTopic, SortingTopic, HeapTopic, MatrixTopic {
                 queue.offer(element)
             }
         }
-        for (i in 0..(k - 2)) {
+        repeat(k - 1) {
             queue.poll()
         }
         return queue.poll()
@@ -42,4 +42,10 @@ class Medium378 : BinaryTreeTopic, SortingTopic, HeapTopic, MatrixTopic {
         }
         return set.elementAt(k)
     }
+}
+
+fun main() {
+    println(Medium378().kthSmallest(arrayOf(intArrayOf(1,5,9), intArrayOf(10,11,13), intArrayOf(12,13,15)), 8))
+    println(Medium378().kthSmallest(arrayOf(intArrayOf(-5)), 1))
+    println(Medium378().kthSmallest(arrayOf(intArrayOf(1,2), intArrayOf(1,3)), 3))
 }

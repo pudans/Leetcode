@@ -10,7 +10,10 @@ package easy
 
 class Easy448 {
 
-    fun findDisappearedNumbers(nums: IntArray): List<Int> {
+    fun findDisappearedNumbers(nums: IntArray): List<Int> =
+        (1..nums.size).subtract(nums.toSet()).toList()
+
+    fun findDisappearedNumbers1(nums: IntArray): List<Int> {
         val result = IntArray(nums.size) { it + 1 }
         nums.forEach { result[it - 1] = -1 }
         return result.filter { it > 0 }
