@@ -50,3 +50,5 @@ interface CombinatoricsTopic
 interface BFSTopic
 
 interface TrieTopic
+
+interface UnionFindTopic
