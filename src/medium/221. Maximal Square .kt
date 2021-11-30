@@ -15,16 +15,25 @@ class Medium221 : ArraysTopic, DynamicProgrammingTopic, MatrixTopic {
 
     fun maximalSquare(matrix: Array<CharArray>): Int {
         if (matrix.isEmpty() || matrix.first().isEmpty()) return 0
-        val dp = Array(matrix.size + 1) { IntArray(matrix[0].size + 1) }
+        val dp = Array(matrix.size + 1) { IntArray(matrix.first().size + 1) }
         var maxsqlen = 0
         for (i in 1..matrix.size) {
-            for (j in 1..matrix[0].size) {
+            for (j in 1..matrix.first().size) {
                 if (matrix[i - 1][j - 1] == '1') {
-                    dp[i][j] = Math.min(Math.min(dp[i][j - 1], dp[i - 1][j]), dp[i - 1][j - 1]) + 1
+                    val bb1 = dp[i][j - 1]
+                    val bb2 = dp[i - 1][j]
+                    val bb3 = dp[i - 1][j - 1]
+                    val bb = Math.min(bb1, bb2)
+                    dp[i][j] = Math.min(bb, bb3) + 1
                     maxsqlen = Math.max(maxsqlen, dp[i][j])
                 }
             }
         }
+
+        dp.forEach {
+            println(it.toList())
+        }
+
         return maxsqlen * maxsqlen
     }
 }
