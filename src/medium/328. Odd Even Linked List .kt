@@ -2,6 +2,7 @@ package medium
 
 import LinkedListTopic
 import utils.ListNode
+import utils.toStringList
 
 /**
  * 328. Odd Even Linked List
@@ -19,17 +20,19 @@ You must solve the problem in O(1) extra space complexity and O(n) time complexi
 class Medium328 : LinkedListTopic {
 
     fun oddEvenList(head: ListNode?): ListNode? {
-        if (head == null || head.next == null || head.next?.next == null) {
-            return head
-        }
+        head ?: return null
+        head.next ?: return head
+        head.next?.next ?: return head
 
-        var temp: ListNode? = head!!.next!!.next
+        println("head: ${head.toStringList()}")
 
-        val result: ListNode? = ListNode(head.`val`)
-        var tempResult = result
+        val second = head.next!!
+        val third = head.next!!.next!!
 
-        var oddResult: ListNode? = ListNode(head.next!!.`val`)
-        var tempOddResult = oddResult
+        var temp: ListNode? = third
+        var tempResult: ListNode? = head
+        var tempOddResult: ListNode? = second
+        second.next = null
 
         var i = 2
 
@@ -44,42 +47,27 @@ class Medium328 : LinkedListTopic {
             temp = temp.next
             i++
         }
-        log(result)
-        log(oddResult)
 
-        tempResult?.next = oddResult
+        println("head: ${head.toStringList()}")
+        println("oddResult: ${second.toStringList()}")
 
-        return result
+        tempResult?.next = second
+
+        return head
     }
+}
 
+fun main() {
+    val s1 = ListNode(1)
+    val s2 = ListNode(2)
+    val s3 = ListNode(3)
+//    val s4 = ListNode(4)
+//    val s5 = ListNode(5)
+    s1.next = s2
+    s2.next = s3
+//    s3.next = s4
+//    s4.next = s5
 
-    companion object {
-
-        @JvmStatic
-        fun main(args: Array<String>) {
-            val s1 = ListNode(1)
-            val s2 = ListNode(2)
-            val s3 = ListNode(3)
-            val s4 = ListNode(4)
-            val s5 = ListNode(5)
-            s1.next = s2
-            s2.next = s3
-            s3.next = s4
-            s4.next = s5
-
-            val ss = Medium328().oddEvenList(s1)
-            println()
-            print("result")
-            log(ss)
-        }
-
-        private fun log(head: ListNode?) {
-            println()
-            var temp = head
-            while (temp != null) {
-                print(", ${temp.`val`}")
-                temp = temp.next
-            }
-        }
-    }
+    val ss = Medium328().oddEvenList(s1)
+    print("ss ${ss.toStringList()}")
 }
