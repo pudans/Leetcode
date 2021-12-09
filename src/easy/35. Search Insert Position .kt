@@ -18,9 +18,6 @@ class Easy35: ArraysTopic, BinarySearchTopic {
         var start = 0
         var end = nums.lastIndex
         while (start <= end) {
-            if (start == end) return if (nums[start] >= target) start else start + 1
-            if (nums[start] == target) return start
-            if (nums[end] == target) return end
             val mid = (start + end) / 2
             if (nums[mid] == target) return mid
             if (nums[mid] > target) {
@@ -29,19 +26,7 @@ class Easy35: ArraysTopic, BinarySearchTopic {
                 start = mid + 1
             }
         }
-        return if (nums[start] >= target) start else start + 1
-    }
-
-    fun searchInsert1(nums: IntArray, target: Int): Int {
-        var result = 0
-        for (i in nums.indices) {
-            when {
-                nums[i] > target -> return result
-                nums[i] == target -> return i
-                nums[i] < target -> result = i + 1
-            }
-        }
-        return result
+        return start
     }
 }
 
