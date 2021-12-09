@@ -26,34 +26,26 @@ class Easy278: VersionControl() {
 
     private fun findInRange(range: IntRange): Int =
         if (range.first == range.last) {
-            if (isBadVersion(range.first)) {
-                range.first
-            } else {
-                minBadVersion
-            }
+            if (isBadVersion(range.first)) range.first else minBadVersion
         } else {
             val mid = ((range.first.toLong() + range.last.toLong()) / 2L).toInt()
-            if (!isBadVersion(mid)) {
-                findInRange(IntRange(Math.min(mid + 1, range.last), range.last))
+            if (isBadVersion(mid)) {
+                minBadVersion = minOf(minBadVersion, mid)
+                findInRange(IntRange(range.first, maxOf(range.first, mid - 1)))
             } else {
-                minBadVersion = Math.min(minBadVersion, mid)
-                findInRange(IntRange(range.first, Math.max(range.first, mid - 1)))
+                findInRange(IntRange(minOf(mid + 1, range.last), range.last))
             }
         }
 }
 
-object Main278 {
+fun main() {
+    val dd = Easy278()
+    dd.badVersion = 1702766719
+    println(dd.firstBadVersion(2126753390))
 
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val dd = Easy278()
-        dd.badVersion = 1702766719
-        println(dd.firstBadVersion(2126753390))
+    dd.badVersion = 4
+    println(dd.firstBadVersion(5))
 
-        dd.badVersion = 4
-        println(dd.firstBadVersion(5))
-
-        dd.badVersion = 1
-        println(dd.firstBadVersion(1))
-    }
+    dd.badVersion = 1
+    println(dd.firstBadVersion(1))
 }
