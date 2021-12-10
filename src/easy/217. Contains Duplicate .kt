@@ -1,5 +1,8 @@
 package easy
 
+import HashTableTopic
+import SortingTopic
+
 /**
  * 217. Contains Duplicate
  * https://leetcode.com/problems/contains-duplicate/
@@ -7,7 +10,7 @@ package easy
  * Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
  */
 
-class Easy217 {
+class Easy217 : SortingTopic, HashTableTopic {
 
     fun containsDuplicate(nums: IntArray): Boolean {
         val set = HashSet<Int>()
