@@ -36,5 +36,6 @@ class Medium416 : DynamicProgrammingTopic {
 
 fun main() {
     println(Medium416().canPartition(intArrayOf(1, 5, 11, 5)))
+    println(Medium416().canPartition(intArrayOf(1, 2, 3, 5)))
 
 }
