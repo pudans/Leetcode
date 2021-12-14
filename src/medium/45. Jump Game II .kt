@@ -29,6 +29,16 @@ class Medium45: ArraysTopic, DynamicProgrammingTopic, GreedyTopic {
         }
         return jumps
     }
+
+    // My TLE
+    fun jump(nums: IntArray, index: Int = 0, jumps: Int = 0): Int {
+        if (nums.lastIndex < index) return Int.MAX_VALUE
+        if (nums.lastIndex == index) return jumps
+        if (nums[index] == 0) return Int.MAX_VALUE
+        var min = Int.MAX_VALUE
+        (1..nums[index]).forEach { min = minOf(min, jump(nums, index + it, jumps + 1)) }
+        return min
+    }
 }
 
 fun main() {
