@@ -13,37 +13,20 @@ import MathTopic
 
 class Easy70: MathTopic, DynamicProgrammingTopic {
 
-    var map: IntArray? = null
-
     fun climbStairs(n: Int): Int {
-        if (map == null) {
-            map = IntArray(n + 1)
-        }
         if (n <= 1) return 1
-        if (n <= 4) return n
-        var result = map?.getOrNull(n)
-        if (result == null) {
-            result = climbStairs(n - 1) + climbStairs(n - 2)
-            map?.set(n, result)
-        }
-        return result
-    }
-
-    fun climbStairs2(n: Int): Int {
-        if (n <= 1) return 1
-        val array = IntArray(n + 1)
-        array[0] = 0
-        array[1] = 1
-        array[2] = 2
-        for (i in 3 until n + 1) {
+        val array = IntArray(n)
+        array[0] = 1
+        array[1] = 2
+        for (i in 2 until n) {
             array[i] = array[i - 1] + array[i - 2]
         }
-        return array[n]
+        return array.last()
     }
 }
 
 fun main() {
-    println(Easy70().climbStairs2(2))
-    println(Easy70().climbStairs2(3))
-    println(Easy70().climbStairs2(14))
+    println(Easy70().climbStairs(2))
+    println(Easy70().climbStairs(3))
+    println(Easy70().climbStairs(14))
 }
