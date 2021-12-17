@@ -23,9 +23,9 @@ class Medium221 : ArraysTopic, DynamicProgrammingTopic, MatrixTopic {
                     val bb1 = dp[i][j - 1]
                     val bb2 = dp[i - 1][j]
                     val bb3 = dp[i - 1][j - 1]
-                    val bb = Math.min(bb1, bb2)
-                    dp[i][j] = Math.min(bb, bb3) + 1
-                    maxsqlen = Math.max(maxsqlen, dp[i][j])
+                    val bb = minOf(bb1, bb2)
+                    dp[i][j] = minOf(bb, bb3) + 1
+                    maxsqlen = maxOf(maxsqlen, dp[i][j])
                 }
             }
         }
@@ -40,12 +40,12 @@ class Medium221 : ArraysTopic, DynamicProgrammingTopic, MatrixTopic {
 
 fun main() {
     val dd = Medium221().maximalSquare(
-            arrayOf(
-                    charArrayOf('1', '0', '1', '0', '0'),
-                    charArrayOf('1', '0', '1', '1', '1'),
-                    charArrayOf('1', '1', '1', '1', '1'),
-                    charArrayOf('1', '0', '0', '1', '0')
-            )
+        arrayOf(
+            charArrayOf('1', '0', '1', '0', '0'),
+            charArrayOf('1', '0', '1', '1', '1'),
+            charArrayOf('1', '1', '1', '1', '1'),
+            charArrayOf('1', '0', '0', '1', '0')
+        )
     )
     println(dd)
 }
