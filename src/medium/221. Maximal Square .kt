@@ -29,11 +29,6 @@ class Medium221 : ArraysTopic, DynamicProgrammingTopic, MatrixTopic {
                 }
             }
         }
-
-        dp.forEach {
-            println(it.toList())
-        }
-
         return maxsqlen * maxsqlen
     }
 }
