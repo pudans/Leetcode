@@ -27,35 +27,51 @@ class Medium310: BFSTopic, DFSTopic {
     /**
      * TLE
      */
-    fun findMinHeightTrees1(n: Int, edges: Array<IntArray>): List<Int> {
+    fun findMinHeightTrees(n: Int, edges: Array<IntArray>): List<Int> {
         val map = HashMap<Int,Int>()
         (0 until n).forEach { root ->
 
             fun findDepth(root: Int, set: HashSet<Int>, depth: Int): Int {
                 if (edges.isEmpty()) return depth
-                val list = edges
-                    .filter { it[0] == root || it[1] == root }
-                    .filter { !set.contains(it[0]) }
-                    .filter { !set.contains(it[1]) }
-                    .map { if (it[0] == root) it[1] else it[0] }
-                if (list.isEmpty()) return depth
-                set.add(root)
-                return list
-                    .map { findDepth(it, set, depth + 1) }
-                    .maxBy { it }!!
+
+                var res = 0
+                for (i in edges.indices) {
+                    val edge = edges[i]
+                    if (edge[0] != root && edge[1] != root) continue
+                    if (set.contains(edge[0])) continue
+                    if (set.contains(edge[1])) continue
+                    val d = if (edge[0] == root) edge[1] else edge[0]
+                    set.add(root)
+                    val f = findDepth(d, set, depth + 1)
+                    if (f > res) {
+                        res = f
+                    }
+                    set.remove(root)
+                }
+
+                return if (res == 0) depth else res
             }
 
             map[root] = findDepth(root, HashSet(), 0)
         }
 
-        val min = map.values.minBy { it }
-
+        var tt = Int.MAX_VALUE
 //        println(map)
+        val dd = mutableListOf<Int>()
+        map.entries.forEach {
+            if (it.value < tt) {
+                tt = it.value
+                dd.clear()
+            }
+            if (it.value == tt) {
+                dd.add(it.key)
+            }
+        }
 
-        return map.filter { it.value == min }.map { it.key }
+        return dd
     }
 
-    fun findMinHeightTrees(n: Int, edges: Array<IntArray>): List<Int>? {
+    fun findMinHeightTrees1(n: Int, edges: Array<IntArray>): List<Int>? {
 
         // base cases
         if (n < 2) {
