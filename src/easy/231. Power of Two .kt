@@ -1,5 +1,7 @@
 package easy
 
+import MathTopic
+
 /**
  * 231. Power of Two
  * https://leetcode.com/problems/power-of-two/
@@ -8,20 +10,15 @@ package easy
  * An integer n is a power of two, if there exists an integer x such that n == 2x.
  */
 
-class Easy231 {
+class Easy231 : MathTopic {
 
-    fun isPowerOfTwo(n: Int): Boolean {
-        if (n == 1) return true
-        if (n == 2) return true
-        if (n % 2 == 1) return false
-        var temp = n
-        while (n > 2) {
-            temp /= 2
-            if (temp == 2) return true
-            if (temp % 2 == 1) return false
+    fun isPowerOfTwo(n: Int): Boolean =
+        when {
+            n <= 0 -> false
+            n <= 2 -> true
+            n % 2 == 1 -> false
+            else -> isPowerOfTwo(n / 2)
         }
-        return false
-    }
 }
 
 fun main() {
