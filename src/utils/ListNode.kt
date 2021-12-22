@@ -34,3 +34,9 @@ fun ListNode?.add(node: ListNode?): ListNode? {
     return node
 }
 
+fun ListNode?.add(value: Int): ListNode {
+    val node = ListNode(value)
+    this?.next = node
+    return node
+}
+
