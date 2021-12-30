@@ -4,6 +4,7 @@ import BFSTopic
 import BinaryTreeTopic
 import DFSTopic
 import TreeTopic
+import com.sun.tools.sjavac.Main.go
 
 /**
  * 116. Populating Next Right Pointers in Each Node
@@ -26,19 +27,12 @@ class Medium116: TreeTopic, BinaryTreeTopic, DFSTopic, BFSTopic {
 
     val map = HashMap<Int, Node>()
 
-    fun connect(root: Node?): Node? {
+    fun connect(root: Node?, level: Int = 0): Node? {
         root ?: return null
-        go(root)
-        return root
-    }
-
-    fun go(root: Node, level: Int = 0) {
-        val last = map[level]
-        if (last != null) {
-            map[level]?.next = root
-        }
+        if (map[level] != null) map[level]?.next = root
         map[level] = root
-        root.left?.let { go(it, level + 1) }
-        root.right?.let { go(it, level + 1) }
+        connect(root.left, level + 1)
+        connect(root.right, level + 1)
+        return root
     }
 }
