@@ -1,5 +1,6 @@
 package easy
 
+import HashTableTopic
 import java.util.*
 
 /**
@@ -15,7 +16,7 @@ You are given an array trust where trust[i] = [ai, bi] representing that the per
 Return the label of the town judge if the town judge exists and can be identified, or return -1 otherwise.
  */
 
-class Easy997 {
+class Easy997 : HashTableTopic {
 
     fun findJudge(n: Int, trust: Array<IntArray>): Int {
         if (n == 1) return 1
