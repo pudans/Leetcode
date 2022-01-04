@@ -17,10 +17,7 @@ class Easy112 {
         when {
             root == null -> false
             root.left == null && root.right == null -> currentSum + root.`val` == targetSum
-            root.left != null && root.right != null ->
-                hasPathSum(root.right!!, targetSum, currentSum + root.`val`)
-                        || hasPathSum(root.left!!, targetSum, currentSum + root.`val`)
-            root.left != null -> hasPathSum(root.left!!, targetSum, currentSum + root.`val`)
             else -> hasPathSum(root.right!!, targetSum, currentSum + root.`val`)
+                    || hasPathSum(root.left!!, targetSum, currentSum + root.`val`)
         }
 }
