@@ -11,7 +11,7 @@ package easy
 class Easy190 {
     // you need treat n as an unsigned value
     fun reverseBits(n: Int): Int {
-        var input = (if (n < 0) 2L * Int.MAX_VALUE + 2L + n else n).toLong()
+        var input = if (n < 0) 2L * Int.MAX_VALUE + 2L + n else n.toLong()
         val pows = LongArray(32)
         val bytes = ByteArray(32)
         var pow = 31
