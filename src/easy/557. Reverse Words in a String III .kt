@@ -1,5 +1,8 @@
 package easy
 
+import StringTopic
+import TwoPointersTopic
+
 /**
  * 557. Reverse Words in a String III
  * https://leetcode.com/problems/reverse-words-in-a-string-iii/
@@ -7,7 +10,7 @@ package easy
 Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
  */
 
-class Easy557 {
+class Easy557 : TwoPointersTopic, StringTopic {
 
     fun reverseWords(s: String): String =
         s.split(" ").joinToString(" ") { it.reversed() }
