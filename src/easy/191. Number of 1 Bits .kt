@@ -7,10 +7,10 @@ package easy
  * Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
  */
 
-class Solution191 {
+class Easy191 {
 //     you need to treat n as an unsigned value
     fun hammingWeight(n: Int): Int {
-        var input = (if (n < 0) 2L * Int.MAX_VALUE + 2L + n else n).toLong()
+        var input: Long = if (n < 0) 2L * Int.MAX_VALUE + 2L + n else n.toLong()
         var result = 0
         var pow = 31
         while (input != 0L || pow >= 0) {
