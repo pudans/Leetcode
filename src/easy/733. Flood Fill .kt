@@ -1,7 +1,6 @@
 package easy
 
-import DynamicProgrammingTopic
-import MathTopic
+import MatrixTopic
 
 /**
  * 733. Flood Fill
@@ -11,7 +10,7 @@ import MathTopic
  * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
  */
 
-class Easy733 : MathTopic, DynamicProgrammingTopic {
+class Easy733 : MatrixTopic {
 
     fun floodFill(image: Array<IntArray>, sr: Int, sc: Int, newColor: Int): Array<IntArray> {
         val lastColor: Int = image[sr][sc]
