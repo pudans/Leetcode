@@ -12,7 +12,7 @@ import BinarySearchTopic
  * You must write an algorithm with O(log n) runtime complexity.
  */
 
-class Easy35: ArraysTopic, BinarySearchTopic {
+class Easy35 : ArraysTopic, BinarySearchTopic {
 
     fun searchInsert(nums: IntArray, target: Int): Int {
         var start = 0
@@ -31,11 +31,11 @@ class Easy35: ArraysTopic, BinarySearchTopic {
 }
 
 fun main() {
-    println(Easy35().searchInsert(nums = intArrayOf(1,3,5,6), target = 5))
-    println(Easy35().searchInsert(nums = intArrayOf(1,3,5,6), target = 2))
-    println(Easy35().searchInsert(nums = intArrayOf(1,3,5,6), target = 7))
-    println(Easy35().searchInsert(nums = intArrayOf(1,3,5,6), target = 0))
+    println(Easy35().searchInsert(nums = intArrayOf(1, 3, 5, 6), target = 5))
+    println(Easy35().searchInsert(nums = intArrayOf(1, 3, 5, 6), target = 2))
+    println(Easy35().searchInsert(nums = intArrayOf(1, 3, 5, 6), target = 7))
+    println(Easy35().searchInsert(nums = intArrayOf(1, 3, 5, 6), target = 0))
     println(Easy35().searchInsert(nums = intArrayOf(1), target = 0))
     println(Easy35().searchInsert(nums = intArrayOf(1), target = 1))
-    println(Easy35().searchInsert(nums = intArrayOf(3,5,7,9,10), target = 8))
+    println(Easy35().searchInsert(nums = intArrayOf(3, 5, 7, 9, 10), target = 8))
 }
