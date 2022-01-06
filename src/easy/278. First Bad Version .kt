@@ -17,14 +17,14 @@ import BinarySearchTopic
 abstract class VersionControl {
     var badVersion = 0
     open fun isBadVersion(version: Int): Boolean = version >= badVersion
-    abstract fun firstBadVersion(n: Int) : Int
+    abstract fun firstBadVersion(n: Int): Int
 }
 
-class Easy278: VersionControl(), BinarySearchTopic {
+class Easy278 : VersionControl(), BinarySearchTopic {
 
     private var minBadVersion = Int.MAX_VALUE
 
-    override fun firstBadVersion(n: Int) : Int = findInRange(IntRange(1,n))
+    override fun firstBadVersion(n: Int): Int = findInRange(IntRange(1, n))
 
     private fun findInRange(range: IntRange): Int =
         if (range.first == range.last) {
