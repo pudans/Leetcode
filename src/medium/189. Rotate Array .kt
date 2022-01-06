@@ -22,7 +22,7 @@ class Medium189 : ArraysTopic, TwoPointersTopic, MathTopic {
 }
 
 fun main() {
-    val array = intArrayOf(1,2,3,4,5,6,7,8,9)
+    val array = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
     println(array.toList())
     Medium189().rotate(array, 3)
     println(array.toList())
