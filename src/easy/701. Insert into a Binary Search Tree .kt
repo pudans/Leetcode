@@ -2,7 +2,6 @@ package easy
 
 import BinarySearchTopic
 import BinaryTreeTopic
-import TwoPointersTopic
 import utils.TreeNode
 
 /**
