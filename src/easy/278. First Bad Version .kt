@@ -1,5 +1,7 @@
 package easy
 
+import BinarySearchTopic
+
 /**
  * 278. First Bad Version
  * https://leetcode.com/problems/first-bad-version/
@@ -18,7 +20,7 @@ abstract class VersionControl {
     abstract fun firstBadVersion(n: Int) : Int
 }
 
-class Easy278: VersionControl() {
+class Easy278: VersionControl(), BinarySearchTopic {
 
     private var minBadVersion = Int.MAX_VALUE
 
