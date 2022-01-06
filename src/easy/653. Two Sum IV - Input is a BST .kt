@@ -1,6 +1,8 @@
 package easy
 
-import TwoPointersTopic
+import BinarySearchTopic
+import BinaryTreeTopic
+import DFSTopic
 import utils.TreeNode
 
 /**
@@ -11,7 +13,7 @@ Given the root of a Binary Search Tree and a target number k,
 return true if there exist two elements in the BST such that their sum is equal to the given target.
  */
 
-class Easy653 : TwoPointersTopic {
+class Easy653 : BinarySearchTopic, DFSTopic, BinaryTreeTopic {
 
     val list = mutableListOf<Int>()
 
