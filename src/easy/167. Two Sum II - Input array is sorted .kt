@@ -1,5 +1,7 @@
 package easy
 
+import TwoPointersTopic
+
 /**
  * 167. Two Sum II - Input array is sorted
  * https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
@@ -10,27 +12,23 @@ package easy
  * The tests are generated such that there is exactly one solution. You may not use the same element twice.
  */
 
-class Easy167 {
+class Easy167 : TwoPointersTopic {
 
     fun twoSum(numbers: IntArray, target: Int): IntArray {
-        for (i in 0..(numbers.size - 2)) {
+        for (i in 0 until numbers.lastIndex) {
             val first = numbers[i]
             for (j in (i + 1) until numbers.size) {
                 val second = numbers[j]
-                if (second + first == target) {
-                    return intArrayOf(i + 1,j + 1)
-                }
-                if (first + second > target) {
-                    break
-                }
+                if (first + second == target) return intArrayOf(i + 1, j + 1)
+                if (first + second > target) break
             }
         }
-        return intArrayOf(0,0)
+        return intArrayOf()
     }
 }
 
 fun main() {
-    println(Easy167().twoSum(intArrayOf(2,7,11,15), 9).toList())
-    println(Easy167().twoSum(intArrayOf(2,3,4), 6).toList())
-    println(Easy167().twoSum(intArrayOf(-1,0), -1).toList())
+    println(Easy167().twoSum(intArrayOf(2, 7, 11, 15), 9).toList())
+    println(Easy167().twoSum(intArrayOf(2, 3, 4), 6).toList())
+    println(Easy167().twoSum(intArrayOf(-1, 0), -1).toList())
 }
