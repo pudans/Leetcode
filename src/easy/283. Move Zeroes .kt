@@ -1,5 +1,7 @@
 package easy
 
+import TwoPointersTopic
+
 /**
  * 283. Move Zeroes
  * https://leetcode.com/problems/move-zeroes/
@@ -8,7 +10,7 @@ package easy
  * Note that you must do this in-place without making a copy of the array.
  */
 
-class Easy283 {
+class Easy283 : TwoPointersTopic {
 
     fun moveZeroes(nums: IntArray): Unit {
         var i = 0
@@ -19,11 +21,7 @@ class Easy283 {
                 j++
 
                 while (j < nums.size) {
-                    if (nums[j] != 0) {
-                        break
-                    } else {
-                        j++
-                    }
+                    if (nums[j] == 0) j++ else break
                 }
             }
             if (j < nums.size) {
@@ -42,7 +40,7 @@ class Easy283 {
 }
 
 fun main() {
-    var dd = intArrayOf(0,1,0,3,12)
+    var dd = intArrayOf(0, 1, 0, 3, 12)
     Easy283().moveZeroes(dd)
     println(dd.toList())
 
