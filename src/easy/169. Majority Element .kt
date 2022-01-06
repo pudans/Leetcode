@@ -1,5 +1,7 @@
 package easy
 
+import SortingTopic
+
 /**
  * 169. Majority Element
  * https://leetcode.com/problems/majority-element/
@@ -8,12 +10,14 @@ package easy
  * The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
  */
 
-class Easy169 {
+class Easy169 : SortingTopic {
 
-    fun majorityElement(nums: IntArray): Int {
+    fun majorityElement(nums: IntArray): Int = nums.sortedArray()[nums.size / 2]
+
+    fun majorityElement1(nums: IntArray): Int {
         var maxCount = 0
         var maxValue = 0
-        val map = HashMap<Int,Int>()
+        val map = HashMap<Int, Int>()
         nums.forEach {
             val value = map.getOrDefault(it, 0) + 1
             map[it] = value
@@ -27,6 +31,6 @@ class Easy169 {
 }
 
 fun main() {
-    println(Easy169().majorityElement(intArrayOf(3,2,3)))
-    println(Easy169().majorityElement(intArrayOf(2,2,1,1,1,2,2)))
+    println(Easy169().majorityElement(intArrayOf(3, 2, 3)))
+    println(Easy169().majorityElement(intArrayOf(2, 2, 1, 1, 1, 2, 2)))
 }
