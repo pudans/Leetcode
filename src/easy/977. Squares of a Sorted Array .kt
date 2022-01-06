@@ -3,7 +3,6 @@ package easy
 import SortingTopic
 import TwoPointersTopic
 
-
 /**
  * 977. Squares of a Sorted Array
  * https://leetcode.com/problems/squares-of-a-sorted-array/
