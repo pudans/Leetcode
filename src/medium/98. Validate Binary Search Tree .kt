@@ -17,7 +17,7 @@ import utils.TreeNode
  * Both the left and right subtrees must also be binary search trees.
  */
 
-class Medium98: TreeTopic, BinaryTreeTopic, BinarySearchTopic, DFSTopic {
+class Medium98 : TreeTopic, BinaryTreeTopic, BinarySearchTopic, DFSTopic {
 
     fun isValidBST(node: TreeNode?, min: Long = Long.MIN_VALUE, max: Long = Long.MAX_VALUE): Boolean {
         node ?: return true
