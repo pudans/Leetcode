@@ -13,10 +13,10 @@ import TwoPointersTopic
  * Notice that the solution set must not contain duplicate triplets.
  */
 
-class Solution15: ArraysTopic, StringTopic, TwoPointersTopic {
+class Medium15 : ArraysTopic, StringTopic, TwoPointersTopic {
 
     fun threeSum(nums: IntArray): List<List<Int>> {
-        if (nums.size < 3) return ArrayList<ArrayList<Int>>()
+        if (nums.size < 3) return emptyList()
         nums.sort()
         val set = HashSet<List<Int>>()
         for (i in 0 until nums.size - 2) {
@@ -40,7 +40,7 @@ class Solution15: ArraysTopic, StringTopic, TwoPointersTopic {
 }
 
 fun main() {
-    println(Solution15().threeSum(intArrayOf(-1,0,1,2,-1,-4)))
-    println(Solution15().threeSum(intArrayOf()))
-    println(Solution15().threeSum(intArrayOf(0)))
+    println(Medium15().threeSum(intArrayOf(-1, 0, 1, 2, -1, -4)))
+    println(Medium15().threeSum(intArrayOf()))
+    println(Medium15().threeSum(intArrayOf(0)))
 }
