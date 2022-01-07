@@ -1,60 +1,62 @@
+import easy.Easy706
 
-class MyHashMap<Key, Value> {
+open class CustomHashMap<Key : Any, Value : Any> {
 
-    class ListNode<Value>(val data: Value?) {
-        var next: ListNode<Value>? = null
+    class Node<Key, Value>(val key: Key?, val data: Value?, var next: Node<Key, Value>?)
+
+    val capacity = 19997
+    val mult = 12582917
+
+    private var data = arrayOfNulls<Node<Key, Value>?>(capacity + 1)
+
+    open fun put(key: Key?, value: Value?) {
+        remove(key)
+        val position = getPosition(key)
+        val node = Node(key, value, data[position])
+        data[position] = node
     }
 
-    var capacity = 20
-
-    var mValues = arrayOfNulls<ListNode<Value>?>(capacity + 1)
-
-    fun put(key: Key?, value: Value?) {
-        if (key != null) {
-            val hash = key.hashCode()
-            val position = hash % capacity + 1
-            putForPosition(position, value)
-        } else {
-            putForPosition(0, value)
+    open fun get(key: Key?): Value? {
+        val position = getPosition(key)
+        var node = data[position]
+        while (node != null) {
+            if (node.key == key) return node.data
+            node = node.next
         }
+        return null
     }
 
-    private fun putForPosition(position: Int, value: Value?) {
-        if (mValues.getOrNull(position) != null) {
-            var list = mValues.getOrNull(position)
-            while (list?.next != null) {
-                list = list.next
+    open fun remove(key: Key?) {
+        val position = getPosition(key)
+        var node: Node<Key, Value>? = data[position] ?: return
+        if (node?.key == key) {
+            data[position] = node?.next
+        } else {
+            while (node?.next != null) {
+                if (node.next?.key === key) {
+                    node.next = node.next!!.next
+                    return
+                }
+                node = node.next
             }
-            list?.next = ListNode(value)
-        } else {
-            mValues.set(position, ListNode(value))
         }
     }
 
-    fun get(key: Key?): Value? {
-        if (key != null) {
-            val hash = key.hashCode()
-            val position = hash % capacity + 1
-            return mValues.getOrNull(position)?.data
-        } else {
-            return mValues.getOrNull(0)?.data
-        }
-    }
+    private fun getPosition(key: Key?): Int = (key.hashCode().toLong() * mult % capacity).toInt()
+}
 
-    fun values(): List<Value> =
-        mValues.mapNotNull { it?.data }
-
-    companion object {
-
-        @JvmStatic
-        fun main(args: Array<String>) {
-            val map = MyHashMap<Int,Int>()
-            map.put(23, 78)
-            map.put(67, 99)
-            println(map.values())
-            println(map.get(23))
-            println(map.get(67))
-            println(map.get(45))
-        }
-    }
+fun main() {
+    val map = CustomHashMap<Int, Int>()
+    map.put(23, 78)
+    map.put(67, 99)
+    map.put(55, 78)
+    map.put(66, 99)
+    map.put(77, 78)
+    map.put(88, 99)
+    map.put(79, 78)
+    map.put(89, 99)
+    println(map.get(23))
+    println(map.get(67))
+    println(map.get(45))
+    println(map.get(89))
 }
