@@ -10,24 +10,21 @@ import MatrixTopic
  * Given an m x n matrix, return all elements of the matrix in spiral order.
  */
 
-class Medium54: ArraysTopic, MatrixTopic {
+class Medium54 : ArraysTopic, MatrixTopic {
 
-    enum class Direction {
-        RIGHT, DOWN, LEFT, UP
-    }
+    enum class Direction { RIGHT, DOWN, LEFT, UP }
 
     fun spiralOrder(matrix: Array<IntArray>): List<Int> {
         if (matrix.isEmpty() || matrix[0].isEmpty()) return listOf()
-        val result = ArrayList<Int>()
-        val visited = HashSet<Pair<Int, Int>>()
+        val result = mutableListOf<Int>()
         var i = 0
         var j = 0
         var direction = Direction.RIGHT
-        val destSize = matrix.size * matrix[0].size
+        val destSize = matrix.size * matrix.first().size
         while (result.size < destSize) {
-            if (!visited.contains(Pair(i, j))) {
+            if (matrix[i][j] != -200) {
                 result.add(matrix[i][j])
-                visited.add(Pair(i, j))
+                matrix[i][j] = -200
             }
             var newi = i
             var newj = j
@@ -43,12 +40,12 @@ class Medium54: ArraysTopic, MatrixTopic {
                 newi < 0 -> true
                 newj >= matrix[0].size -> true
                 newj < 0 -> true
-                visited.contains(Pair(newi, newj)) -> true
+                matrix[newi][newj] == -200 -> true
                 else -> false
             }
 
             if (isNeedChangeDirect) {
-                direction = changeDirection(direction)
+                direction = Direction.values()[(direction.ordinal + 1) % Direction.values().size]
             } else {
                 i = newi
                 j = newj
@@ -56,12 +53,4 @@ class Medium54: ArraysTopic, MatrixTopic {
         }
         return result
     }
-
-    private fun changeDirection(direction: Direction): Direction =
-        when (direction) {
-            Direction.RIGHT -> Direction.DOWN
-            Direction.DOWN -> Direction.LEFT
-            Direction.LEFT -> Direction.UP
-            Direction.UP -> Direction.RIGHT
-        }
 }
