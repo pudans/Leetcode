@@ -13,18 +13,24 @@ import MatrixTopic
  * DO NOT allocate another 2D matrix and do the rotation.
  */
 
-class Medium48: ArraysTopic, MathTopic, MatrixTopic {
+class Medium48 : ArraysTopic, MathTopic, MatrixTopic {
 
     fun rotate(matrix: Array<IntArray>) {
         val n = matrix.size
         for (j in 0 until n / 2) {
-            for (i in j until n-1-j) {
-                val tmp = matrix[i][n-1-j]
-                matrix[i][n-1-j] = matrix[j][i]
-                matrix[j][i] = matrix[n-1-i][j]
-                matrix[n-1-i][j] = matrix[n-1-j][n-1-i]
-                matrix[n-1-j][n-1-i] = tmp
+            for (i in j until n - 1 - j) {
+                val tmp = matrix[i][n - 1 - j]
+                matrix[i][n - 1 - j] = matrix[j][i]
+                matrix[j][i] = matrix[n - 1 - i][j]
+                matrix[n - 1 - i][j] = matrix[n - 1 - j][n - 1 - i]
+                matrix[n - 1 - j][n - 1 - i] = tmp
             }
         }
     }
+}
+
+fun main() {
+    val matrix = arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9))
+    Medium48().rotate(matrix)
+    println(matrix.map { it.toList() }.map { it.toList() })
 }
