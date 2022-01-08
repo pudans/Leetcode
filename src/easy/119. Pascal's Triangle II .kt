@@ -1,5 +1,7 @@
 package easy
 
+import DynamicProgrammingTopic
+
 /**
  * 119. Pascal's Triangle II
  * https://leetcode.com/problems/pascals-triangle-ii/
@@ -7,23 +9,22 @@ package easy
  * Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
  */
 
-class Easy119 {
+class Easy119 : DynamicProgrammingTopic {
 
     fun getRow(rowIndex: Int): List<Int> {
-        val result = ArrayList<List<Int>>(rowIndex + 1)
-        result.add(listOf(1))
+        var lastRow: IntArray = intArrayOf(1)
         for (i in 1..rowIndex) {
-            val inner = arrayOfNulls<Int>(i + 1)
+            val inner = IntArray(i + 1)
             inner[0] = 1
             inner[i] = 1
-            for (j in 1..(i/2)) {
-                val t = result[i - 1][j - 1] + result[i - 1][j]
+            for (j in 1..(i / 2)) {
+                val t = lastRow[j - 1] + lastRow[j]
                 inner[j] = t
                 inner[i - j] = t
             }
-            result.add(i, inner.filterNotNull())
+            lastRow = inner
         }
-        return result[rowIndex]
+        return lastRow.toList()
     }
 }
 
