@@ -1,6 +1,5 @@
 package medium
 
-import BacktrackingTopic
 import HashTableTopic
 import SlidingWindowTopic
 import StringTopic
@@ -19,16 +18,11 @@ class Medium567 : StringTopic, HashTableTopic, SlidingWindowTopic, TwoPointersTo
     fun checkInclusion(s1: String, s2: String): Boolean {
         val map = HashMap<Char, Int>()
         s1.forEach { map[it] = map.getOrDefault(it, 0) + 1 }
-        println(map)
-        for (i in 0..(s2.length - s1.length)) {
-            if (find(s1, s2, HashMap(map), i)) return true
-        }
-        return false
+        return (0..(s2.length - s1.length)).any { find(s1, s2, HashMap(map), it) }
     }
 
-    fun find(s1: String, s2: String, map: HashMap<Char,Int>, i: Int): Boolean {
-        val substr = s2.substring(i, i + s1.length)
-        substr.forEach {
+    fun find(s1: String, s2: String, map: HashMap<Char, Int>, i: Int): Boolean {
+        s2.substring(i, i + s1.length).forEach {
             val d = map[it] ?: return false
             if (d == 1) map.remove(it)
             else map[it] = d - 1
