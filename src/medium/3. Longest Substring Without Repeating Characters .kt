@@ -11,7 +11,7 @@ import StringTopic
  * Given a string s, find the length of the longest substring without repeating characters.
  */
 
-class Medium3: HashTableTopic, StringTopic, SlidingWindowTopic {
+class Medium3 : HashTableTopic, StringTopic, SlidingWindowTopic {
 
     fun lengthOfLongestSubstring(s: String): Int {
         var map = HashMap<Char, Int>()
@@ -21,12 +21,12 @@ class Medium3: HashTableTopic, StringTopic, SlidingWindowTopic {
             if (dd == null) {
                 map[s[i]] = i
             } else {
-                result = Math.max(result, map.size)
+                result = maxOf(result, map.size)
                 map = map.filterTo(HashMap()) { dd < it.value }
                 map[s[i]] = i
             }
         }
-        result = Math.max(result, map.size)
+        result = maxOf(result, map.size)
         return result
     }
 }
