@@ -43,5 +43,5 @@ class Medium334 : GreedyTopic {
 }
 
 fun main() {
-    println(Medium334().increasingTriplet(intArrayOf(2,1,5,0,6)))
+    println(Medium334().increasingTriplet(intArrayOf(2, 1, 5, 0, 6)))
 }
