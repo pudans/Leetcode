@@ -1,5 +1,6 @@
 package easy
 
+import BinaryTreeTopic
 import utils.TreeNode
 
 /**
@@ -14,39 +15,26 @@ import utils.TreeNode
  * Note: The merging process must start from the root nodes of both trees.
  */
 
-class Easy617 {
+class Easy617 : BinaryTreeTopic {
 
     fun mergeTrees(first: TreeNode?, second: TreeNode?): TreeNode? {
+        if (first == null && second == null) return null
+        if (first == null) return second
+        if (second == null) return first
 
-        if (first == null && second == null) {
-            return null
-        }
-
-        if (first == null) {
-            return second
-        }
-
-        if (second == null) {
-            return first
-        }
-
-        mergeTrees11(first, second)
-
-        return first
-    }
-
-    fun mergeTrees11(first: TreeNode, second: TreeNode) {
         first.`val` += second.`val`
         if (first.left != null && second.left != null) {
-            mergeTrees11(first.left!!, second.left!!)
+            mergeTrees(first.left, second.left)
         } else if (first.left == null && second.left != null) {
             first.left = second.left
         }
 
         if (first.right != null && second.right != null) {
-            mergeTrees11(first.right!!, second.right!!)
+            mergeTrees(first.right, second.right)
         } else if (first.right == null && second.right != null) {
             first.right = second.right
         }
+
+        return first
     }
 }
