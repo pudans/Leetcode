@@ -16,7 +16,7 @@ import TreeTopic
  * Initially, all next pointers are set to NULL.
  */
 
-class Medium116: TreeTopic, BinaryTreeTopic, DFSTopic, BFSTopic {
+class Medium116 : TreeTopic, BinaryTreeTopic, DFSTopic, BFSTopic {
 
     class Node(var `val`: Int) {
         var left: Node? = null
