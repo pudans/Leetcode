@@ -21,16 +21,14 @@ class Medium334 : GreedyTopic {
                 num <= second -> second = num
                 else -> return true
             }
+            println("$num $first $second")
         }
         return false
     }
 
     // Mine
     fun increasingTriplet2(nums: IntArray): Boolean {
-        if (nums.size < 3) {
-            return false
-        }
-
+        if (nums.size < 3) return false
         for (i in 0 until nums.size - 2) {
             for (j in i until nums.size - 1) {
                 for (z in j until nums.size) {
@@ -42,4 +40,8 @@ class Medium334 : GreedyTopic {
         }
         return false
     }
+}
+
+fun main() {
+    println(Medium334().increasingTriplet(intArrayOf(2, 1, 5, 0, 6)))
 }
