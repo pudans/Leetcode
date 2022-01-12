@@ -1,4 +1,4 @@
-package easy
+package medium
 
 import BinarySearchTopic
 import BinaryTreeTopic
@@ -13,9 +13,9 @@ It is guaranteed that the new value does not exist in the original BST.
 Notice that there may exist multiple valid ways for the insertion, as long as the tree remains a BST after insertion. You can return any of them.
  */
 
-class Easy701 : BinaryTreeTopic, BinarySearchTopic {
+class Medium701 : BinaryTreeTopic, BinarySearchTopic {
 
-    fun insertIntoBST(root: TreeNode?, `val`: Int): TreeNode? {
+    fun insertIntoBST(root: TreeNode?, `val`: Int): TreeNode {
         root ?: return TreeNode(`val`)
         if (`val` > root.`val`) {
             if (root.right == null) {
