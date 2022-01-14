@@ -15,16 +15,16 @@ class Medium784 : StringTopic, BacktrackingTopic {
 
     fun letterCasePermutation(s: String): List<String> {
         val result = mutableListOf<String>()
-        val count = s.count { !it.isDigit() }
-        val variants = Math.pow(2.0, count.toDouble()).toInt()
+        val positions = mutableListOf<Int>()
+        s.forEachIndexed { index, c -> if (!c.isDigit()) positions.add(index) }
+        val variants = Math.pow(2.0, positions.size.toDouble()).toInt()
         repeat(variants) { variant ->
             val copy = s.toCharArray()
             var z = 2
-            for (i in copy.indices) {
-                if (copy[i].isDigit()) continue
+            positions.forEach { pos ->
                 val dd = variants / z
                 val gg = (variant / dd) % 2 == 0
-                copy[i] = if (gg) copy[i].toLowerCase() else copy[i].toUpperCase()
+                copy[pos] = if (gg) copy[pos].toLowerCase() else copy[pos].toUpperCase()
                 z *= 2
             }
             result.add(String(copy))
