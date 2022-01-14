@@ -3,8 +3,6 @@ package medium
 import ArraysTopic
 import BFSTopic
 import MatrixTopic
-import StringTopic
-import TwoPointersTopic
 
 /**
  * 994. Rotting Oranges
@@ -18,7 +16,7 @@ import TwoPointersTopic
  * Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.
  */
 
-class Medium994: ArraysTopic, BFSTopic, MatrixTopic {
+class Medium994 : ArraysTopic, BFSTopic, MatrixTopic {
 
     fun orangesRotting(grid: Array<IntArray>): Int {
         var fresh = -1
@@ -62,9 +60,9 @@ class Medium994: ArraysTopic, BFSTopic, MatrixTopic {
 }
 
 fun main() {
-    println(Medium994().orangesRotting(arrayOf(intArrayOf(2,1,1), intArrayOf(1,1,0), intArrayOf(0,1,1))))
-    println(Medium994().orangesRotting(arrayOf(intArrayOf(0,2))))
-    println(Medium994().orangesRotting(arrayOf(intArrayOf(2,1,1), intArrayOf(0,1,1), intArrayOf(1,0,1))))
-    println(Medium994().orangesRotting(arrayOf(intArrayOf(1,2))))
-    println(Medium994().orangesRotting(arrayOf(intArrayOf(1,1,1,1))))
+    println(Medium994().orangesRotting(arrayOf(intArrayOf(2, 1, 1), intArrayOf(1, 1, 0), intArrayOf(0, 1, 1))))
+    println(Medium994().orangesRotting(arrayOf(intArrayOf(0, 2))))
+    println(Medium994().orangesRotting(arrayOf(intArrayOf(2, 1, 1), intArrayOf(0, 1, 1), intArrayOf(1, 0, 1))))
+    println(Medium994().orangesRotting(arrayOf(intArrayOf(1, 2))))
+    println(Medium994().orangesRotting(arrayOf(intArrayOf(1, 1, 1, 1))))
 }
