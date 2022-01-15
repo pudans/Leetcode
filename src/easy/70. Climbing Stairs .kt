@@ -11,7 +11,7 @@ import MathTopic
  * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
  */
 
-class Easy70: MathTopic, DynamicProgrammingTopic {
+class Easy70 : MathTopic, DynamicProgrammingTopic {
 
     fun climbStairs(n: Int): Int {
         if (n <= 1) return 1
