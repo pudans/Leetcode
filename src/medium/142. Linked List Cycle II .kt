@@ -15,10 +15,10 @@ import utils.ListNode
  * Do not modify the linked list.
  */
 
-class Medium142: HashTableTopic, LinkedListTopic, TwoPointersTopic {
+class Medium142 : HashTableTopic, LinkedListTopic, TwoPointersTopic {
 
     fun detectCycle(head: ListNode?): ListNode? {
-        if (head == null) return null
+        head ?: return null
         var fast = head
         var slow = head
         while (fast != null) {
