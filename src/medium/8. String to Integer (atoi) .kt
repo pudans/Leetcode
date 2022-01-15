@@ -23,7 +23,7 @@ import StringTopic
  * Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
  */
 
-class Medium8: StringTopic {
+class Medium8 : StringTopic {
 
     fun myAtoi(str: String): Int {
         val newStr = str.trim()
@@ -33,31 +33,16 @@ class Medium8: StringTopic {
         when {
             newStr[0] == '-' -> isMinus = true
             newStr[0] == '+' -> isMinus = false
-            newStr[0].isDigit() -> result = newStr[0].toString().toLong()
+            newStr[0].isDigit() -> result += newStr[0].toString().toInt()
             else -> return 0
         }
         for (i in 1 until newStr.length) {
-            if (newStr[i].isDigit()) {
-                result = (result * 10) + newStr[i].toString().toInt()
-                if (isMinus && -result < Int.MIN_VALUE ) {
-                    return Int.MIN_VALUE
-                } else if (result > Int.MAX_VALUE) {
-                    return Int.MAX_VALUE
-                }
-
-            } else {
-                return if (isMinus) {
-                    -result.toInt()
-                } else {
-                    result.toInt()
-                }
-            }
+            if (!newStr[i].isDigit()) break
+            result = 10 * result + newStr[i].toString().toInt()
+            if (isMinus && -result < Int.MIN_VALUE) return Int.MIN_VALUE
+            if (!isMinus && result > Int.MAX_VALUE) return Int.MAX_VALUE
         }
-        return if (isMinus) {
-            -result.toInt()
-        } else {
-            result.toInt()
-        }
+        return (if (isMinus) -result else result).toInt()
     }
 }
 

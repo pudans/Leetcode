@@ -10,7 +10,7 @@ import BacktrackingTopic
  * Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
  */
 
-class Medium46: ArraysTopic, BacktrackingTopic {
+class Medium46 : ArraysTopic, BacktrackingTopic {
 
     fun permute(nums: IntArray): List<List<Int>> {
         val result = ArrayList<List<Int>>()
@@ -18,7 +18,7 @@ class Medium46: ArraysTopic, BacktrackingTopic {
         return result
     }
 
-    fun generate(result: ArrayList<List<Int>>, nums: IntArray, l: Int, r: Int) {
+    private fun generate(result: ArrayList<List<Int>>, nums: IntArray, l: Int, r: Int) {
         if (l == r) {
             result.add(nums.toList())
             return
@@ -29,7 +29,7 @@ class Medium46: ArraysTopic, BacktrackingTopic {
                 nums[l] = nums[i]
                 nums[i] = temp
 
-                generate(result, nums, l+1, r)
+                generate(result, nums, l + 1, r)
 
                 temp = nums[l]
                 nums[l] = nums[i]
@@ -40,7 +40,7 @@ class Medium46: ArraysTopic, BacktrackingTopic {
 }
 
 fun main() {
-    println(Medium46().permute(intArrayOf(1,2,3)))
-    println(Medium46().permute(intArrayOf(0,1)))
+    println(Medium46().permute(intArrayOf(1, 2, 3)))
+    println(Medium46().permute(intArrayOf(0, 1)))
     println(Medium46().permute(intArrayOf(1)))
 }
