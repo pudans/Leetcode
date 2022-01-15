@@ -15,7 +15,7 @@ import utils.ListNode
  * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  */
 
-class Medium2: LinkedListTopic, MathTopic, RecursionTopic {
+class Medium2 : LinkedListTopic, MathTopic, RecursionTopic {
 
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
         var result: ListNode? = null
@@ -25,25 +25,11 @@ class Medium2: LinkedListTopic, MathTopic, RecursionTopic {
         var isAddOne = false
 
         while (first != null || second != null) {
-            var newValue = when {
-                first != null && second != null -> {
-                    first.`val` + second.`val`
-                }
-                first != null -> first.`val`
-                else -> second?.`val` ?: 0
-            }
-
-            if (isAddOne) {
-                newValue++
-                isAddOne = false
-            }
-            if (newValue >= 10) {
-                isAddOne = true
-                newValue -= 10
-            }
-
+            var newValue = (first?.`val` ?: 0) + (second?.`val` ?: 0)
+            if (isAddOne) newValue++
+            isAddOne = newValue >= 10
+            newValue %= 10
             val newNode = ListNode(newValue)
-
             if (stepRes != null) {
                 stepRes.next = newNode
                 stepRes = stepRes.next
@@ -54,11 +40,9 @@ class Medium2: LinkedListTopic, MathTopic, RecursionTopic {
             first = first?.next
             second = second?.next
         }
-
         if (isAddOne) {
             stepRes?.next = ListNode(1)
         }
-
         return result
     }
 }
