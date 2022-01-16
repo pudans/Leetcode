@@ -1,5 +1,6 @@
 package easy
 
+import BitManipulationTopic
 import MathTopic
 
 /**
@@ -10,7 +11,7 @@ import MathTopic
  * An integer n is a power of two, if there exists an integer x such that n == 2x.
  */
 
-class Easy231 : MathTopic {
+class Easy231 : MathTopic, BitManipulationTopic {
 
     fun isPowerOfTwo(n: Int): Boolean =
         when {
