@@ -1,6 +1,7 @@
 package easy
 
 import ArraysTopic
+import BitManipulationTopic
 
 /**
  * 136. Single Number
@@ -10,7 +11,7 @@ import ArraysTopic
  * You must implement a solution with a linear runtime complexity and use only constant extra space.
  */
 
-class Easy136 : ArraysTopic {
+class Easy136 : ArraysTopic, BitManipulationTopic {
 
     fun singleNumber(nums: IntArray): Int {
         val set = HashSet<Int>()
