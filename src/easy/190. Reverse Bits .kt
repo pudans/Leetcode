@@ -1,5 +1,7 @@
 package easy
 
+import BitManipulationTopic
+
 /**
  * 190. Reverse Bits
  * https://leetcode.com/problems/reverse-bits/
@@ -8,7 +10,8 @@ package easy
  * BULLSHIT
  */
 
-class Easy190 {
+class Easy190 : BitManipulationTopic {
+
     // you need treat n as an unsigned value
     fun reverseBits(n: Int): Int {
         var input = if (n < 0) 2L * Int.MAX_VALUE + 2L + n else n.toLong()
