@@ -3,6 +3,7 @@ package medium
 import ArraysTopic
 import BinarySearchTopic
 
+
 /**
  * 34. Find First and Last Position of Element in Sorted Array
  * https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
@@ -12,12 +13,45 @@ import BinarySearchTopic
  * You must write an algorithm with O(log n) runtime complexity.
  */
 
-class Medium34: ArraysTopic, BinarySearchTopic {
+class Medium34 : ArraysTopic, BinarySearchTopic {
 
     fun searchRange(nums: IntArray, target: Int): IntArray {
+        var first = -1
+        var last = -1
+        var start = 0
+        var end = nums.lastIndex
+        while (start <= end) {
+            val mid = start + (end - start) / 2
+            when {
+                nums[mid] == target -> {
+                    first = mid
+                    end = mid - 1
+                }
+                target > nums[mid] -> start = mid + 1
+                else -> end = mid - 1
+            }
+        }
+        start = 0
+        end = nums.lastIndex
+        while (start <= end) {
+            val mid = start + (end - start) / 2
+            when {
+                nums[mid] == target -> {
+                    start = mid + 1
+                    last = mid
+                }
+                target > nums[mid] -> start = mid + 1
+                else -> end = mid - 1
+            }
+        }
+        return intArrayOf(first, last)
+    }
+
+    // mine
+    fun searchRange1(nums: IntArray, target: Int): IntArray {
         val index = nums.binarySearch(target)
         if (index < 0) {
-            return intArrayOf(-1,-1)
+            return intArrayOf(-1, -1)
         }
         var start = index
         var end = index
@@ -40,7 +74,7 @@ class Medium34: ArraysTopic, BinarySearchTopic {
 }
 
 fun main() {
-    println(Medium34().searchRange(intArrayOf(5,7,7,8,8,10), 8).toList())
-    println(Medium34().searchRange(intArrayOf(5,7,7,8,8,10), 6).toList())
+    println(Medium34().searchRange(intArrayOf(5, 7, 7, 8, 8, 10), 8).toList())
+    println(Medium34().searchRange(intArrayOf(5, 7, 7, 8, 8, 10), 6).toList())
     println(Medium34().searchRange(intArrayOf(), 0).toList())
 }
