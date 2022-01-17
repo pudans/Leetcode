@@ -15,32 +15,29 @@ import BinarySearchTopic
  * You must write an algorithm with O(log n) runtime complexity.
  */
 
-class Medium33: BinarySearchTopic, ArraysTopic {
+class Medium33 : BinarySearchTopic, ArraysTopic {
 
     fun search(nums: IntArray, target: Int): Int {
         if (nums.isEmpty()) return -1
         if (nums.size == 1) return if (nums.first() == target) 0 else -1;
-
-        var fromIndex = 0
-        var toIndex = nums.size - 1
-
-        while (fromIndex <= toIndex) {
-            if (nums[fromIndex] == target) return fromIndex
-            if (nums[toIndex] == target) return toIndex
-            val mid = (fromIndex + toIndex) / 2
+        var start = 0
+        var end = nums.lastIndex
+        while (start <= end) {
+            val mid = (start + end) / 2
+            if (nums[start] == target) return start
+            if (nums[end] == target) return end
             if (nums[mid] == target) return mid
-
-            if (nums[fromIndex] <= nums[mid]) {
-                if (target >= nums[fromIndex] && target < nums[mid]) {
-                    toIndex = mid - 1
+            if (nums[start] <= nums[mid]) {
+                if (target >= nums[start] && target < nums[mid]) {
+                    end = mid - 1
                 } else {
-                    fromIndex = mid + 1
+                    start = mid + 1
                 }
             } else {
-                if (target > nums[mid] && target <= nums[toIndex]) {
-                    fromIndex = mid + 1
+                if (target > nums[mid] && target <= nums[end]) {
+                    start = mid + 1
                 } else {
-                    toIndex = mid - 1
+                    end = mid - 1
                 }
             }
         }
@@ -49,7 +46,7 @@ class Medium33: BinarySearchTopic, ArraysTopic {
 }
 
 fun main() {
-    println(Medium33().search(intArrayOf(4,5,6,7,0,1,2), 0))
-    println(Medium33().search(intArrayOf(4,5,6,7,0,1,2), 3))
+    println(Medium33().search(intArrayOf(4, 5, 6, 7, 0, 1, 2), 0))
+    println(Medium33().search(intArrayOf(4, 5, 6, 7, 0, 1, 2), 3))
     println(Medium33().search(intArrayOf(1), 0))
 }
