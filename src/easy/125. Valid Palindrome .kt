@@ -1,5 +1,8 @@
 package easy
 
+import StringTopic
+import TwoPointersTopic
+
 /**
  * 125. Valid Palindrome
  * https://leetcode.com/problems/valid-palindrome/
@@ -7,16 +10,18 @@ package easy
  * Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
  */
 
-class Easy125 {
+class Easy125 : StringTopic, TwoPointersTopic {
 
     fun isPalindrome(s: String): Boolean {
-        var i = 0
-        var j = s.length - 1
-        while (i < j) {
+        var start = 0
+        var end = s.lastIndex
+        while (start < end) {
             when {
-                !s[i].isLetterOrDigit() -> i++
-                !s[j].isLetterOrDigit() -> j--
-                s[i].equals(s[j], ignoreCase = true) -> { i++; j-- }
+                !s[start].isLetterOrDigit() -> start++
+                !s[end].isLetterOrDigit() -> end--
+                s[start].equals(s[end], true) -> {
+                    start++; end--
+                }
                 else -> return false
             }
         }
