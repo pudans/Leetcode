@@ -3,6 +3,7 @@ package medium
 import ArraysTopic
 import BinarySearchTopic
 
+
 /**
  * 162. Find Peak Element
  * https://leetcode.com/problems/find-peak-element/
@@ -16,14 +17,25 @@ import BinarySearchTopic
 class Medium162 : ArraysTopic, BinarySearchTopic {
 
     fun findPeakElement(nums: IntArray): Int {
-        for (i in nums.indices) {
-            val prev = if (i == 0) true else nums[i] > nums[i-1]
-            val next = if (i == nums.size - 1) true else nums[i] > nums[i+1]
-
-            if (prev && next) {
-                return i
-            }
+        var start = 0
+        var end = nums.lastIndex
+        while (start < end) {
+            val mid = (start + end) / 2
+            if (nums[mid] > nums[mid + 1]) end = mid else start = mid + 1
         }
-        return -1
+        return start
     }
+
+    // mine
+    fun findPeakElement1(nums: IntArray): Int {
+        for (i in 0 until nums.lastIndex) {
+            if (nums[i] > nums[i + 1]) return i
+        }
+        return nums.lastIndex
+    }
+}
+
+fun main() {
+    println(Medium162().findPeakElement(intArrayOf(1, 2, 3, 1)))
+    println(Medium162().findPeakElement(intArrayOf(1, 2, 1, 3, 5, 6, 4)))
 }
