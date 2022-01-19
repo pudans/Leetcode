@@ -17,7 +17,7 @@ import java.util.*
  * int getMin() retrieves the minimum element in the stack.
  */
 
-class Easy155: StackTopic {
+class Easy155 : StackTopic {
 
     class MinStack {
 
