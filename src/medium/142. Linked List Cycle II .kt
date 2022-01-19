@@ -22,11 +22,9 @@ class Medium142 : HashTableTopic, LinkedListTopic, TwoPointersTopic {
         var fast = head
         var slow = head
         while (fast != null) {
-            if (fast.next == null || fast.next!!.next == null) {
-                return null
-            }
-            slow = slow!!.next
-            fast = fast.next!!.next
+            if (fast.next?.next == null) return null
+            slow = slow?.next
+            fast = fast.next?.next
             if (fast === slow) break
         }
         fast = head
