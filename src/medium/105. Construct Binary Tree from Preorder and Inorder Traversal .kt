@@ -17,15 +17,18 @@ import utils.TreeNode
 class Medium105 : TreeTopic, BinaryTreeTopic {
 
     fun buildTree(
-            inorder: IntArray, postorder: IntArray,
-            inS: Int = 0, inE: Int = inorder.lastIndex,
-            posS: Int = 0, posE: Int = postorder.lastIndex
+        preorder: IntArray,
+        inorder: IntArray,
+        start: Int = 0,
+        end: Int = inorder.lastIndex,
+        index: Int = 0
     ): TreeNode? {
-        if (inS > inE || posS > posE) return null
-        val root = TreeNode(postorder[posE])
-        val rootI = inorder.indexOfFirst { it == root.`val` }
-        root.left = buildTree(inorder, postorder,  inS, rootI - 1, posS, posS + rootI - inS - 1)
-        root.right = buildTree(inorder, postorder, rootI + 1, inE,posS + rootI - inS, posE - 1)
+        if (start > end) return null
+        val root = TreeNode(preorder[index])
+        var inIndex = start
+        while (preorder[index] != inorder[inIndex]) inIndex++
+        root.left = buildTree(preorder, inorder, start, inIndex - 1, index + 1)
+        root.right = buildTree(preorder, inorder, inIndex + 1, end, index + inIndex - start + 1)
         return root
     }
 }
