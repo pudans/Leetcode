@@ -1,5 +1,10 @@
 package easy
 
+import ArraysTopic
+import BinarySearchTopic
+import BinaryTreeTopic
+import Tree
+import TreeTopic
 import utils.TreeNode
 
 /**
@@ -10,25 +15,21 @@ import utils.TreeNode
  * A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
  */
 
-class Easy108 {
+class Easy108 : ArraysTopic, TreeTopic, BinaryTreeTopic, BinarySearchTopic {
 
-    fun sortedArrayToBST(nums: IntArray): TreeNode? {
+    fun sortedArrayToBST(nums: IntArray, start: Int = 0, end: Int = nums.lastIndex): TreeNode? {
         if (nums.isEmpty()) return null
-        return createBalancedTree(nums, 0, nums.size - 1)
-    }
-
-    private fun createBalancedTree(array: IntArray, start: Int, end: Int): TreeNode? {
         if (end < start) return null
-        val middle = ((start + end) / 2f).toInt()
-        val node = TreeNode(array[middle])
-        node.left = createBalancedTree(array, start, middle - 1)
-        node.right = createBalancedTree(array, middle + 1, end)
-        return node
+        val middle = (start + end) / 2
+        return TreeNode(nums[middle]).apply {
+            left = sortedArrayToBST(nums, start, middle - 1)
+            right = sortedArrayToBST(nums, middle + 1, end)
+        }
     }
 }
 
 fun main() {
-    val data = intArrayOf(-10,-3,0,5,9)
+    val data = intArrayOf(-10, -3, 0, 5, 9)
     val tree = Easy108().sortedArrayToBST(data)!!
     Tree.Traversal.LevelOrder.traverse(tree)
     println(Tree.Traversal.LevelOrder.result)
