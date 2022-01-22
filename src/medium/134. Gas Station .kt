@@ -1,5 +1,8 @@
 package medium
 
+import ArraysTopic
+import GreedyTopic
+
 /**
  * 134. Gas Station
  * https://leetcode.com/problems/gas-station/
@@ -11,9 +14,24 @@ package medium
  * If there exists a solution, it is guaranteed to be unique
  */
 
-class Medium134 {
+class Medium134 : ArraysTopic, GreedyTopic {
 
     fun canCompleteCircuit(gas: IntArray, cost: IntArray): Int {
+        var sum = 0
+        var gasInTank = 0
+        var start = 0
+        for (i in gas.indices) {
+            gasInTank += gas[i] - cost[i]
+            sum += gas[i] - cost[i]
+            if (gasInTank < 0) {
+                start = i + 1
+                gasInTank = 0
+            }
+        }
+        return if (sum >= 0) start else -1
+    }
+
+    fun canCompleteCircuit1(gas: IntArray, cost: IntArray): Int {
         val size = gas.size
         for (i in gas.indices) {
             if (gas[i] < cost[i]) continue
@@ -36,6 +54,6 @@ class Medium134 {
 }
 
 fun main() {
-    println(Medium134().canCompleteCircuit(intArrayOf(1,2,3,4,5), intArrayOf(3,4,5,1,2)))
-    println(Medium134().canCompleteCircuit(intArrayOf(2,3,4), intArrayOf(3,4,3)))
+    println(Medium134().canCompleteCircuit(intArrayOf(1, 2, 3, 4, 5), intArrayOf(3, 4, 5, 1, 2)))
+    println(Medium134().canCompleteCircuit(intArrayOf(2, 3, 4), intArrayOf(3, 4, 3)))
 }
