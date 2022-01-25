@@ -17,17 +17,11 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 class Medium236 : TreeTopic, DFSTopic, BinaryTreeTopic {
 
     fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
-        if (root == null || p == null || q == null) {
-            return null
-        }
-        if (root == p || root == q) {
-            return root
-        }
+        if (root == null || p == null || q == null) return null
+        if (root == p || root == q) return root
         val right = lowestCommonAncestor(root.right, p, q)
         val left = lowestCommonAncestor(root.left, p, q)
-        if (right != null && left != null) {
-            return root
-        }
+        if (right != null && left != null) return root
         return right ?: left
     }
 }
