@@ -30,3 +30,8 @@ class Medium215 : SortingTopic, HeapTopic {
         return nums[nums.size - k]
     }
 }
+
+fun main() {
+    println(Medium215().findKthLargest(intArrayOf(3, 2, 1, 5, 6, 4), 2))
+    println(Medium215().findKthLargest(intArrayOf(3, 2, 3, 1, 2, 4, 5, 5, 6), 4))
+}
