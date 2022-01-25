@@ -17,9 +17,23 @@ import java.util.*
 
 class Medium230 : TreeTopic, DFSTopic, BFSTopic, BinarySearchTopic, BinaryTreeTopic {
 
-    private val result = TreeSet<Int>()
+    fun inorder(root: TreeNode?, arr: ArrayList<Int>): ArrayList<Int> {
+        if (root == null) return arr
+        inorder(root.left, arr)
+        arr.add(root.`val`)
+        inorder(root.right, arr)
+        return arr
+    }
 
     fun kthSmallest(root: TreeNode?, k: Int): Int {
+        val nums = inorder(root, ArrayList())
+        return nums[k - 1]
+    }
+
+    // mine
+    private val result = TreeSet<Int>()
+
+    fun kthSmallest1(root: TreeNode?, k: Int): Int {
         root?.let { go(root) }
         return result.elementAt(k)
     }
