@@ -12,7 +12,7 @@ Given a root node reference of a BST and a key, delete the node with the given k
 Basically, the deletion can be divided into two stages:
 Search for a node to remove.
 If the node is found, delete the node.
- BULLSHIT
+BULLSHIT
  */
 
 class Medium450 : BinarySearchTopic, BinaryTreeTopic {
