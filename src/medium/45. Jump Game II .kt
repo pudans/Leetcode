@@ -14,7 +14,7 @@ import GreedyTopic
  * You can assume that you can always reach the last index.
  */
 
-class Medium45: ArraysTopic, DynamicProgrammingTopic, GreedyTopic {
+class Medium45 : ArraysTopic, DynamicProgrammingTopic, GreedyTopic {
 
     fun jump(nums: IntArray): Int {
         var jumps = 0
@@ -42,8 +42,8 @@ class Medium45: ArraysTopic, DynamicProgrammingTopic, GreedyTopic {
 }
 
 fun main() {
-    println(Medium45().jump(intArrayOf(2,3,1,1,4)))
-    println(Medium45().jump(intArrayOf(2,3,0,1,4)))
-    println(Medium45().jump(intArrayOf(2,0,2,4,6,0,0,3)))
-    println(Medium45().jump(intArrayOf(1,2,1,1,1)))
+    println(Medium45().jump(intArrayOf(2, 3, 1, 1, 4)))
+    println(Medium45().jump(intArrayOf(2, 3, 0, 1, 4)))
+    println(Medium45().jump(intArrayOf(2, 0, 2, 4, 6, 0, 0, 3)))
+    println(Medium45().jump(intArrayOf(1, 2, 1, 1, 1)))
 }
