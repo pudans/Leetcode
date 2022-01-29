@@ -14,23 +14,23 @@ import MathTopic
  * How many possible unique paths are there?
  */
 
-class Medium62: MathTopic, DynamicProgrammingTopic, CombinatoricsTopic {
+class Medium62 : MathTopic, DynamicProgrammingTopic, CombinatoricsTopic {
 
     fun uniquePaths(m: Int, n: Int): Int {
-        val array = Array(m + 1) { IntArray(n + 1) { 0 } }
+        val array = Array(m + 1) { IntArray(n + 1) }
         array[1][0] = 1
-        for (i in 1 .. m) {
-            for (j in 1 .. n) {
-                array[i][j] = array[i][j-1] + array[i-1][j];
+        for (i in 1..m) {
+            for (j in 1..n) {
+                array[i][j] = array[i][j - 1] + array[i - 1][j];
             }
         }
-        return array[m][n];
+        return array.last().last()
     }
 }
 
 fun main() {
-    println(Medium62().uniquePaths(3,7))
-    println(Medium62().uniquePaths(7,3))
-    println(Medium62().uniquePaths(3,3))
-    println(Medium62().uniquePaths(3,2))
+    println(Medium62().uniquePaths(3, 7))
+    println(Medium62().uniquePaths(7, 3))
+    println(Medium62().uniquePaths(3, 3))
+    println(Medium62().uniquePaths(3, 2))
 }
