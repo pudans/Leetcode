@@ -3,10 +3,7 @@ package medium
 import BFSTopic
 import BacktrackingTopic
 import DFSTopic
-import StackTopic
-import Tree.Traversal.LevelOrder.result
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * 797. All Paths From Source to Target
@@ -18,35 +15,38 @@ The graph is given as follows: graph[i] is a list of all nodes you can visit fro
 
 class Medium797 : BacktrackingTopic, DFSTopic, BFSTopic {
 
-    val result = ArrayList<List<Int>>()
-    lateinit var graph: Array<IntArray>
-
-    fun allPathsSourceTarget(graph: Array<IntArray>): List<List<Int>> {
-        this.graph = graph
-        find(0, ArrayList())
-        return result
-    }
-
-    fun find(index: Int, current: ArrayList<Int>) {
+    fun allPathsSourceTarget(
+        graph: Array<IntArray>,
+        index: Int = 0,
+        current: ArrayList<Int> = ArrayList(),
+        result: ArrayList<List<Int>> = ArrayList()
+    ): ArrayList<List<Int>> {
         current.add(index)
         if (index == graph.lastIndex) {
             result.add(current)
         } else {
-            val new = ArrayList(current)
-            if (graph[index].isNotEmpty()) {
-                find(graph[index].first(), current)
-            }
-            for (i in 1 until graph[index].size) {
-                find(graph[index][i], ArrayList(new))
+            for (i in 0 until graph[index].size) {
+                allPathsSourceTarget(graph, graph[index][i], ArrayList(current), result)
             }
         }
+        return result
     }
 }
 
 fun main() {
-    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1,2), intArrayOf(3), intArrayOf(3), intArrayOf())))
-    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(4,3,1), intArrayOf(3,2,4), intArrayOf(3), intArrayOf(4), intArrayOf())))
+    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1, 2), intArrayOf(3), intArrayOf(3), intArrayOf())))
+    println(
+        Medium797().allPathsSourceTarget(
+            arrayOf(
+                intArrayOf(4, 3, 1),
+                intArrayOf(3, 2, 4),
+                intArrayOf(3),
+                intArrayOf(4),
+                intArrayOf()
+            )
+        )
+    )
     println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1), intArrayOf())))
-    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1,2,3), intArrayOf(2), intArrayOf(3), intArrayOf())))
-    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1,3), intArrayOf(2), intArrayOf(3), intArrayOf())))
+    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1, 2, 3), intArrayOf(2), intArrayOf(3), intArrayOf())))
+    println(Medium797().allPathsSourceTarget(arrayOf(intArrayOf(1, 3), intArrayOf(2), intArrayOf(3), intArrayOf())))
 }
