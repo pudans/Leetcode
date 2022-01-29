@@ -18,16 +18,13 @@ class Medium213 : ArraysTopic, DynamicProgrammingTopic {
     fun rob(nums: IntArray): Int {
         if (nums.size == 1) return nums[0]
         if (nums.size == 2) return maxOf(nums[0], nums[1])
-
         val dp1 = IntArray(nums.size)
         dp1[0] = nums[0]
         dp1[1] = nums[0]
         val dp2 = IntArray(nums.size)
         dp2[1] = nums[1]
-
         for (i in 2 until nums.size) {
-            if (i == nums.lastIndex) dp1[i] = dp1[i - 1]
-            else dp1[i] = maxOf(dp1[i - 1], dp1[i - 2] + nums[i])
+            dp1[i] = if (i == nums.lastIndex) dp1[i - 1] else maxOf(dp1[i - 1], dp1[i - 2] + nums[i])
             dp2[i] = maxOf(nums[i] + dp2[i - 2], dp2[i - 1])
         }
         return maxOf(dp1.last(), dp2.last())
@@ -35,8 +32,8 @@ class Medium213 : ArraysTopic, DynamicProgrammingTopic {
 }
 
 fun main() {
-    println(Medium213().rob(intArrayOf(2,3,2)))
-    println(Medium213().rob(intArrayOf(1,2,3,1)))
-    println(Medium213().rob(intArrayOf(1,2,3)))
-    println(Medium213().rob(intArrayOf(4,1,2,7,5,3,1)))
+    println(Medium213().rob(intArrayOf(2, 3, 2)))
+    println(Medium213().rob(intArrayOf(1, 2, 3, 1)))
+    println(Medium213().rob(intArrayOf(1, 2, 3)))
+    println(Medium213().rob(intArrayOf(4, 1, 2, 7, 5, 3, 1)))
 }
