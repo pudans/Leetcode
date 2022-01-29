@@ -29,8 +29,6 @@ class Medium438 : HashTableTopic, SlidingWindowTopic {
             result.add(0)
         }
         for (i in 1..(s.length - p.length)) {
-            println("$i ${i - 1} ${i + p.length - 1}")
-
             pp -= Math.sin(s[i - 1].toDouble())
             pp += Math.sin(s[i + p.length - 1].toDouble())
             if (Math.abs(dd - pp) < 0.0000000001) {
@@ -43,4 +41,5 @@ class Medium438 : HashTableTopic, SlidingWindowTopic {
 
 fun main() {
     println(Medium438().findAnagrams("cbaebabacd", "abc"))
+    println(Medium438().findAnagrams("abab", "ab"))
 }
