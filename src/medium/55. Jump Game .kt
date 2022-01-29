@@ -13,7 +13,7 @@ import GreedyTopic
  * Return true if you can reach the last index, or false otherwise.
  */
 
-class Medium55: ArraysTopic, GreedyTopic, DynamicProgrammingTopic {
+class Medium55 : ArraysTopic, GreedyTopic, DynamicProgrammingTopic {
 
     fun canJump(nums: IntArray): Boolean {
         if (nums.size == 1) return true
@@ -29,12 +29,11 @@ class Medium55: ArraysTopic, GreedyTopic, DynamicProgrammingTopic {
                 }
             }
         }
-        println(res.toList())
         return res[nums.size - 1]
     }
 }
 
 fun main() {
-    println(Medium55().canJump(intArrayOf(2,3,1,1,4)))
-    println(Medium55().canJump(intArrayOf(3,2,1,0,4)))
+    println(Medium55().canJump(intArrayOf(2, 3, 1, 1, 4)))
+    println(Medium55().canJump(intArrayOf(3, 2, 1, 0, 4)))
 }
