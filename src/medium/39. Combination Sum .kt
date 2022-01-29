@@ -14,37 +14,34 @@ import BacktrackingTopic
  * It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
  */
 
-class Medium39: ArraysTopic, BacktrackingTopic {
-
-    val result = ArrayList<List<Int>>()
+class Medium39 : ArraysTopic, BacktrackingTopic {
 
     fun combinationSum(candidates: IntArray, target: Int): List<List<Int>> {
+        val result = ArrayList<List<Int>>()
         for (i in candidates.indices) {
-            isCombinate(i, candidates, 0, target, ArrayList())
+            isCombinate(candidates, target, i, 0, ArrayList(), result)
         }
         return result
     }
 
     fun isCombinate(
-        index: Int,
         candidates: IntArray,
-        value: Int,
         target: Int,
-        items: ArrayList<Int>
+        index: Int,
+        value: Int,
+        items: ArrayList<Int>,
+        result: ArrayList<List<Int>>
     ) {
-        if (index == candidates.size) {
-            return
-        }
+        if (index == candidates.size) return
         val newValue = value + candidates[index]
         items.add(candidates[index])
         if (newValue == target) {
             result.add(ArrayList(items))
             return
         }
-
         if (newValue < target) {
             for (i in index until candidates.size) {
-                isCombinate(i, candidates, newValue, target, ArrayList(items))
+                isCombinate(candidates, target, i, newValue, ArrayList(items), result)
             }
         }
     }
