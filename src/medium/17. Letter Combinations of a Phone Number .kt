@@ -13,7 +13,7 @@ import StringTopic
  * A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
  */
 
-class Medium17: HashTableTopic, StringTopic, BacktrackingTopic  {
+class Medium17 : HashTableTopic, StringTopic, BacktrackingTopic {
 
     fun letterCombinations(digits: String): List<String> {
         val map = mapOf(
@@ -24,21 +24,22 @@ class Medium17: HashTableTopic, StringTopic, BacktrackingTopic  {
             6 to "mno",
             7 to "pqrs",
             8 to "tuv",
-            9 to "wxyz")
+            9 to "wxyz"
+        )
         val result = ArrayList<String>()
         if (digits.isEmpty()) return result
-        val number: Int = digits.fold(1) { acc, c -> acc * map.getOrDefault(c.toString().toInt(),"").length }
+        val number = digits.fold(1) { acc, c -> acc * (map[c.toString().toInt()]?.length ?: 0) }
         var gg = number
         val mn = IntArray(digits.length) {
-            gg /= map.getOrDefault(digits[it].toString().toInt(), "").length
+            gg /= map[digits[it].toString().toInt()]?.length ?: 0
             return@IntArray gg
         }
         for (i in 0 until number) {
             var res1 = ""
             digits.forEachIndexed { index, char ->
-                map.getOrDefault(char.toString().toInt(),"").takeIf { it.isNotEmpty() }?.let {
+                map.getOrDefault(char.toString().toInt(), "").takeIf { it.isNotEmpty() }?.let {
                     val tt = i / mn[index]
-                    res1 += it.get(tt % it.length)
+                    res1 += it[tt % it.length]
                 }
             }
             result.add(res1)
