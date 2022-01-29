@@ -11,22 +11,21 @@ import StringTopic
  * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
  */
 
-class Medium22: StringTopic, BacktrackingTopic, DynamicProgrammingTopic {
-
-    private val result = ArrayList<String>()
+class Medium22 : StringTopic, BacktrackingTopic, DynamicProgrammingTopic {
 
     fun generateParenthesis(n: Int): List<String?> {
-        backtrack("", 0, 0, n)
+        val result = ArrayList<String>()
+        backtrack("", 0, 0, n, result)
         return result
     }
 
-    private fun backtrack(cur: String, open: Int, close: Int, max: Int) {
+    private fun backtrack(cur: String, open: Int, close: Int, max: Int, result: ArrayList<String>) {
         if (cur.length == max * 2) {
             result.add(cur)
             return
         }
-        if (open < max) backtrack("$cur(", open + 1, close, max)
-        if (close < open) backtrack("$cur)", open, close + 1, max)
+        if (open < max) backtrack("$cur(", open + 1, close, max, result)
+        if (close < open) backtrack("$cur)", open, close + 1, max, result)
     }
 }
 
