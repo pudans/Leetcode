@@ -10,9 +10,10 @@ import BitManipulationTopic
  *
  * Given an integer array nums of unique elements, return all possible subsets (the power set).
  * The solution set must not contain duplicate subsets. Return the solution in any order.
+ * BULLSHIT
  */
 
-class Medium78: ArraysTopic, BacktrackingTopic, BitManipulationTopic {
+class Medium78 : ArraysTopic, BacktrackingTopic, BitManipulationTopic {
 
     fun subsets(nums: IntArray): List<List<Int>> {
         val result = ArrayList<List<Int>>()
@@ -21,7 +22,7 @@ class Medium78: ArraysTopic, BacktrackingTopic, BitManipulationTopic {
             val str = Integer.toBinaryString(i)
             val res = ArrayList<Int>()
             for (j in nums.indices) {
-                if (nums.size - j > str.length && str[j - (nums.size - str.length)] == '1') {
+                if (nums.size - j <= str.length && str[j - (nums.size - str.length)] == '1') {
                     res.add(nums[j])
                 }
             }
@@ -32,6 +33,6 @@ class Medium78: ArraysTopic, BacktrackingTopic, BitManipulationTopic {
 }
 
 fun main() {
-    println(Medium78().subsets(intArrayOf(1,2,3)))
+    println(Medium78().subsets(intArrayOf(1, 2, 3)))
     println(Medium78().subsets(intArrayOf(0)))
 }
