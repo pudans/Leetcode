@@ -2,6 +2,7 @@ package medium
 
 import DynamicProgrammingTopic
 import StringTopic
+import Tree.Traversal.LevelOrder.result
 
 
 /**
@@ -13,75 +14,61 @@ import StringTopic
 
 class Medium5 : DynamicProgrammingTopic, StringTopic {
 
-    fun longestPalindrome(s: String?): String {
-        if (s == null || s.isEmpty()) return ""
-        var start = 0
-        var end = 0
-        fun expandAroundCenter(s: String, left: Int, right: Int): Int {
-            var L = left
-            var R = right
-            while (L >= 0 && R < s.length && s[L] == s[R]) {
-                L--; R++
-            }
-            return R - L - 1
-        }
-        for (i in s.indices) {
-            val len1 = expandAroundCenter(s, i, i)
-            val len2 = expandAroundCenter(s, i, i + 1)
-            val len = maxOf(len1, len2)
-            if (len > end - start) {
-                start = i - (len - 1) / 2
-                end = i + len / 2
-            }
-        }
-        return s.substring(start, end + 1)
-    }
+//    fun longestPalindrome(s: String?): String {
+//        if (s == null || s.isEmpty()) return ""
+//        var start = 0
+//        var end = 0
+//        fun expandAroundCenter(s: String, left: Int, right: Int): Int {
+//            var L = left
+//            var R = right
+//            while (L >= 0 && R < s.length && s[L] == s[R]) {
+//                L--; R++
+//            }
+//            return R - L - 1
+//        }
+//        for (i in s.indices) {
+//            val len1 = expandAroundCenter(s, i, i)
+//            val len2 = expandAroundCenter(s, i, i + 1)
+//            val len = maxOf(len1, len2)
+//            if (len > end - start) {
+//                start = i - (len - 1) / 2
+//                end = i + len / 2
+//            }
+//        }
+//        return s.substring(start, end + 1)
+//    }
 
     // mine
-    fun longestPalindrome1(str: String): String {
-        if (str.length == 1) {
-            return str
-        }
+    fun longestPalindrome(str: String): String {
+        if (str.length == 1) return str
         var maxResult = 0
-        var result = ""
+        var pos = 0
         for (i in 1 until str.length) {
-            val curUnevenMaxResult = getUnevenMaxPalindrome(str, i)
-            val curEvenMaxResult = getEvenMaxPalindrome(str, i)
-            if (curUnevenMaxResult > maxResult && curUnevenMaxResult > curEvenMaxResult) {
+            val curUnevenMaxResult = getMaxPalindrome(str, i - 1, i + 1)
+            if (curUnevenMaxResult > maxResult) {
                 maxResult = curUnevenMaxResult
-                result = str.substring(i - curUnevenMaxResult / 2, i + 1 + curUnevenMaxResult / 2)
+                pos = i
             }
-            if (curEvenMaxResult > maxResult && curEvenMaxResult > curUnevenMaxResult) {
+            val curEvenMaxResult = getMaxPalindrome(str, i - 1, i)
+            if (curEvenMaxResult > maxResult) {
                 maxResult = curEvenMaxResult
-                result = str.substring(i - curEvenMaxResult / 2, i + curEvenMaxResult / 2)
+                pos = i
             }
         }
-        return result
-    }
-
-    private fun getUnevenMaxPalindrome(str: String, i: Int): Int {
-        var start = i - 1
-        var end = i + 1
-        var result = 1
-        while (start >= 0 && end < str.length) {
-            if (str[start] != str[end]) {
-                return result
-            } else {
-                start--
-                end++
-                result += 2
-            }
+        return if (maxResult % 2 == 0) {
+            str.substring(pos - maxResult / 2, pos + maxResult / 2)
+        } else {
+            str.substring(pos - maxResult / 2, pos + 1 + maxResult / 2)
         }
-        return result
     }
 
-    private fun getEvenMaxPalindrome(str: String, i: Int): Int {
-        var start = i - 1
-        var end = i
-        var result = 0
+    private fun getMaxPalindrome(str: String, start: Int, end: Int): Int {
+        var start = start
+        var end = end
+        var result = (end - start - 1)
         while (start >= 0 && end < str.length) {
             if (str[start] != str[end]) {
-                return result
+                break
             } else {
                 start--
                 end++
