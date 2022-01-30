@@ -13,12 +13,8 @@ import TwoPointersTopic
 
 class Medium189 : ArraysTopic, TwoPointersTopic, MathTopic {
 
-    fun rotate(nums: IntArray, k: Int) {
-        val clone = nums.clone()
-        for (i in nums.indices) {
-            nums[(i + k) % nums.size] = clone[i]
-        }
-    }
+    fun rotate(nums: IntArray, k: Int) =
+        nums.clone().also { for (i in nums.indices) { nums[(i + k) % nums.size] = it[i] } }
 }
 
 fun main() {
