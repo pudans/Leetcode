@@ -13,7 +13,7 @@ import TrieTopic
  * Note that the same word in the dictionary may be reused multiple times in the segmentation.
  */
 
-class Medium139: HashTableTopic, StringTopic, DynamicProgrammingTopic, TrieTopic {
+class Medium139 : HashTableTopic, StringTopic, DynamicProgrammingTopic, TrieTopic {
 
     private val map = HashMap<String, Boolean>()
 
@@ -31,8 +31,8 @@ class Medium139: HashTableTopic, StringTopic, DynamicProgrammingTopic, TrieTopic
 }
 
 fun main() {
-    println(Medium139().wordBreak("leetcode", listOf("leet","code")))
-    println(Medium139().wordBreak("applepenapple", listOf("apple","pen")))
-    println(Medium139().wordBreak("catsandog", listOf("cats","dog","sand","and","cat")))
+    println(Medium139().wordBreak("leetcode", listOf("leet", "code")))
+    println(Medium139().wordBreak("applepenapple", listOf("apple", "pen")))
+    println(Medium139().wordBreak("catsandog", listOf("cats", "dog", "sand", "and", "cat")))
 
 }
