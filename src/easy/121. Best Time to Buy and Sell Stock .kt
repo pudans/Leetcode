@@ -1,5 +1,8 @@
 package easy
 
+import ArraysTopic
+import DynamicProgrammingTopic
+
 /**
  * 121. Best Time to Buy and Sell Stock
  * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
@@ -9,33 +12,26 @@ package easy
  * Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
  */
 
-class Easy121 {
+class Easy121 : ArraysTopic, DynamicProgrammingTopic {
 
     fun maxProfit(prices: IntArray): Int {
         var result = 0
         var min = Int.MAX_VALUE
         var profit = 0
-        prices.forEach {
-            if (it < min) {
-                if (result < profit) {
-                    result = profit
-                }
+        prices.forEach { price ->
+            if (price < min) {
+                result = maxOf(result, profit)
                 profit = 0
-                min = it
+                min = price
             } else {
-                if (it - min > profit) {
-                    profit = it - min
-                }
+                profit = maxOf(price - min, profit)
             }
         }
-        if (profit > result) {
-            result = profit
-        }
-        return result
+        return maxOf(result, profit)
     }
 }
 
 fun main() {
-    println(Easy121().maxProfit(intArrayOf(7,1,5,3,6,4)))
-    println(Easy121().maxProfit(intArrayOf(7,6,4,3,1)))
+    println(Easy121().maxProfit(intArrayOf(7, 1, 5, 3, 6, 4)))
+    println(Easy121().maxProfit(intArrayOf(7, 6, 4, 3, 1)))
 }
