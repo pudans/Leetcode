@@ -1,6 +1,5 @@
 package medium
 
-import BinarySearchTopic
 import DynamicProgrammingTopic
 
 /**
@@ -13,7 +12,7 @@ A subsequence is a sequence that can be derived from an array by deleting some o
 For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
  */
 
-class Medium300 : BinarySearchTopic, DynamicProgrammingTopic {
+class Medium300 : DynamicProgrammingTopic {
 
     fun lengthOfLIS(nums: IntArray): Int {
         if (nums.isEmpty()) return 0
@@ -27,8 +26,14 @@ class Medium300 : BinarySearchTopic, DynamicProgrammingTopic {
                     max = dp[j]
             }
             dp[i] = max + 1
-            result = Math.max(result, dp[i])
+            result = maxOf(result, dp[i])
         }
         return result
     }
+}
+
+fun main() {
+    println(Medium300().lengthOfLIS(intArrayOf(10, 9, 2, 5, 3, 7, 101, 18)))
+    println(Medium300().lengthOfLIS(intArrayOf(0, 1, 0, 3, 2, 3)))
+    println(Medium300().lengthOfLIS(intArrayOf(7, 7, 7, 7, 7, 7, 7)))
 }
