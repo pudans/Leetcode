@@ -2,6 +2,7 @@ package medium
 
 import HashTableTopic
 import SlidingWindowTopic
+import Tree.Traversal.LevelOrder.result
 
 /**
  *  438. Find All Anagrams in a String
@@ -15,13 +16,11 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 class Medium438 : HashTableTopic, SlidingWindowTopic {
 
     fun findAnagrams(s: String, p: String): List<Int> {
+        if (s.length < p.length) return emptyList()
         val result = ArrayList<Int>()
-        if (s.length < p.length) {
-            return result
-        }
         var dd = 0.0
         var pp = 0.0
-        for (i in 0 until p.length) {
+        for (i in p.indices) {
             dd += Math.sin(p[i].toDouble())
             pp += Math.sin(s[i].toDouble())
         }
