@@ -15,24 +15,25 @@ class Medium454 : HashTableTopic {
 
     fun fourSumCount(A: IntArray, B: IntArray, C: IntArray, D: IntArray): Int {
         var result = 0
-
-        val map = HashMap<Int,Int>()
+        val map = HashMap<Int, Int>()
         A.forEach { a ->
             B.forEach { b ->
                 val key = a + b
-                map.set(key, map.getOrDefault(key, 0) + 1)
+                map[key] = map.getOrDefault(key, 0) + 1
             }
         }
-
         C.forEach { c ->
             D.forEach { d ->
                 val key = -(c + d)
                 if (map.containsKey(key)) {
-                    result += map.get(key)!!
+                    result += map[key]!!
                 }
             }
         }
-
         return result
     }
+}
+
+fun main() {
+    println(Medium454().fourSumCount(intArrayOf(1, 2), intArrayOf(-2, -1), intArrayOf(-1, 2), intArrayOf(0, 2)))
 }
