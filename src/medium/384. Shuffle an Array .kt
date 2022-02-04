@@ -1,5 +1,7 @@
 package medium
 
+import ArraysTopic
+import MathTopic
 import kotlin.random.Random
 
 /**
@@ -14,26 +16,30 @@ int[] reset() Resets the array to its original configuration and returns it.
 int[] shuffle() Returns a random shuffling of the array.
  */
 
-class Medium384(private val nums: IntArray) {
+class Medium384 : ArraysTopic, MathTopic {
 
-    private val cloned = nums.copyOf()
+    class Solution(private val nums: IntArray) {
 
-    /** Resets the array to its original configuration and return it. */
-    fun reset(): IntArray {
-        return cloned
+        private val cloned = nums.copyOf()
+
+        /** Resets the array to its original configuration and return it. */
+        fun reset(): IntArray = nums
+
+        /** Returns a random shuffling of the array. */
+        fun shuffle(): IntArray =
+            cloned.also { array ->
+                val random = Random(System.nanoTime())
+                repeat(array.size) { index ->
+                    val swapPos = random.nextInt(array.size)
+                    array[index] = array[swapPos].also { array[swapPos] = array[index] }
+                }
+            }
     }
+}
 
-    /** Returns a random shuffling of the array. */
-    fun shuffle(): IntArray {
-        val random = Random(System.nanoTime())
-        val size = nums.size
-
-        nums.forEachIndexed { index, i ->
-            val swapPos = random.nextInt(size)
-            val temp = nums[swapPos]
-            nums[swapPos] = i
-            nums[index] = temp
-        }
-        return nums
-    }
+fun main() {
+    val task = Medium384.Solution(intArrayOf(1,2,3))
+    println(task.shuffle().toList())
+    println(task.reset().toList())
+    println(task.shuffle().toList())
 }
