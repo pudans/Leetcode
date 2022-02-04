@@ -30,5 +30,6 @@ class Medium525 : HashTableTopic {
 }
 
 fun main() {
+    println(Medium525().findMaxLength(intArrayOf(0, 1)))
     println(Medium525().findMaxLength(intArrayOf(0, 1, 0)))
 }
