@@ -1,5 +1,9 @@
 package easy
 
+import HashTableTopic
+import MathTopic
+import TwoPointersTopic
+
 /**
  * 202. Happy Number
  * https://leetcode.com/problems/happy-number/
@@ -12,17 +16,14 @@ package easy
  * Return true if n is a happy number, and false if not.
  */
 
-class Easy202 {
+class Easy202 : HashTableTopic, MathTopic, TwoPointersTopic {
 
     fun isHappy(n: Int): Boolean {
         if (n == 1) return true
         var param = n
-        var loopCount = 0
-        while (loopCount < 10) {
-            val value = param.toString().sumOf { char -> Character.getNumericValue(char).let { it * it } }
-            if (value == 1) return true
-            param = value
-            loopCount++
+        repeat(10) {
+            param = param.toString().sumBy { char -> Character.getNumericValue(char).let { it * it } }
+            if (param == 1) return true
         }
         return false
     }
