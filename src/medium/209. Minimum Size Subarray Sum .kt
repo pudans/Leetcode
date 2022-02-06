@@ -32,7 +32,7 @@ class Medium209 : SlidingWindowTopic, BinarySearchTopic, ArraysTopic {
 }
 
 fun main() {
-    println(Medium209().minSubArrayLen(11, intArrayOf(1,2,3,4,5)))
+    println(Medium209().minSubArrayLen(11, intArrayOf(1, 2, 3, 4, 5)))
     println(Medium209().minSubArrayLen(7, intArrayOf(2, 3, 1, 2, 4, 3)))
     println(Medium209().minSubArrayLen(4, intArrayOf(1, 4, 4)))
     println(Medium209().minSubArrayLen(11, intArrayOf(1, 1, 1, 1, 1, 1, 1, 1)))
