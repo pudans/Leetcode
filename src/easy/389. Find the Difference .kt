@@ -1,5 +1,9 @@
 package easy
 
+import BitManipulationTopic
+import HashTableTopic
+import StringTopic
+
 /**
  * 389. Find the Difference
  * https://leetcode.com/problems/find-the-difference/
@@ -9,15 +13,16 @@ package easy
  * Return the letter that was added to t.
  */
 
-class Easy389 {
+class Easy389 : StringTopic, HashTableTopic, BitManipulationTopic {
 
     fun findTheDifference(s: String, t: String): Char {
-        var sum = t[t.length - 1].code
+        var sum = t.last().toInt()
         s.forEachIndexed { index, value ->
-            sum += t[index].code - value.code
+            sum += t[index].toInt() - value.toInt()
         }
         return sum.toChar()
     }
+
 }
 
 fun main() {
