@@ -1,5 +1,8 @@
 package easy
 
+import BFSTopic
+import DFSTopic
+import TreeTopic
 import utils.TreeNode
 
 /**
@@ -11,22 +14,17 @@ import utils.TreeNode
  * Note: A leaf is a node with no children.
  */
 
-class Easy111 {
+class Easy111 : TreeTopic, DFSTopic, BFSTopic {
 
     fun minDepth(root: TreeNode?): Int {
         if (root == null) return 0
-        return getHeight(root) + 1
+        return getHeight(root)
     }
 
-    private fun getHeight(root: TreeNode, currentHeight: Int = 0): Int =
+    private fun getHeight(root: TreeNode?): Int =
         when {
-            root.left == null && root.right == null -> currentHeight
-            root.left != null && root.right != null ->
-                Math.min(
-                    getHeight(root.right!!, currentHeight + 1),
-                    getHeight(root.left!!, currentHeight + 1)
-                )
-            root.left != null -> getHeight(root.left!!, currentHeight + 1)
-            else -> getHeight(root.right!!, currentHeight + 1)
+            root == null -> Int.MAX_VALUE
+            root.left == null && root.right == null -> 1
+            else -> minOf(getHeight(root.right), getHeight(root.left)) + 1
         }
 }
