@@ -1,5 +1,7 @@
 package medium
 
+import ArraysTopic
+
 /**
  * 560. Subarray Sum Equals K
  * https://leetcode.com/problems/subarray-sum-equals-k/
@@ -7,7 +9,7 @@ package medium
  * Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.
  */
 
-class Medium560 {
+class Medium560 : ArraysTopic {
 
     fun subarraySum(nums: IntArray, k: Int): Int {
         var result = 0

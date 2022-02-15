@@ -1,5 +1,9 @@
 package easy
 
+import BFSTopic
+import BinaryTreeTopic
+import DFSTopic
+import TreeTopic
 import utils.TreeNode
 
 /**
@@ -10,7 +14,7 @@ import utils.TreeNode
  * A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
  */
 
-class Easy104 {
+class Easy104 : TreeTopic, BinaryTreeTopic, DFSTopic, BFSTopic {
 
     fun maxDepth(root: TreeNode?): Int {
         root ?: return 0
