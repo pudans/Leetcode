@@ -20,9 +20,8 @@ class Medium24 : LinkedListTopic {
         sentinel.next = head
         var step = sentinel
         while (true) {
-            val temp1 = step.next
-            val temp2 = step.next?.next
-            if (temp1 == null || temp2 == null) break
+            val temp1 = step.next ?: break
+            val temp2 = step.next?.next ?: break
             step.next = temp2
             temp1.next = temp2.next
             temp2.next = temp1
