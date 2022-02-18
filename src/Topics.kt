@@ -1,8 +1,3 @@
-class Topics {
-
-
-}
-
 interface ArraysTopic
 
 interface StringTopic
@@ -52,3 +47,5 @@ interface BFSTopic
 interface TrieTopic
 
 interface UnionFindTopic
+
+interface MonotonicStackTopics
