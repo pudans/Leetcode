@@ -1,5 +1,6 @@
 package easy
 
+import BacktrackingTopic
 import utils.TreeNode
 
 /**
@@ -10,17 +11,14 @@ import utils.TreeNode
  * A leaf is a node with no children.
  */
 
-class Easy257 {
+class Easy257 : BacktrackingTopic {
 
-    val result = ArrayList<String>()
-
-    fun binaryTreePaths(root: TreeNode?): List<String> {
+    fun binaryTreePaths(
+        root: TreeNode?,
+        currentPath: String = "",
+        result: ArrayList<String> = ArrayList()
+    ): List<String> {
         root ?: return emptyList()
-        getPath(root)
-        return result
-    }
-
-    private fun getPath(root: TreeNode, currentPath: String = "") {
         var newPath = currentPath
         if (currentPath.isNotEmpty()) {
             newPath += "->"
@@ -29,7 +27,8 @@ class Easy257 {
         if (root.left == null && root.right == null) {
             result.add(newPath)
         }
-        root.left?.let { getPath(it, newPath) }
-        root.right?.let { getPath(it, newPath) }
+        root.left?.let { binaryTreePaths(it, newPath, result) }
+        root.right?.let { binaryTreePaths(it, newPath, result) }
+        return result
     }
 }
