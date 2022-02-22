@@ -1,5 +1,8 @@
 package easy
 
+import MathTopic
+import StringTopic
+
 /**
  * 171. Excel Sheet Column Number
  * https://leetcode.com/problems/excel-sheet-column-number/
@@ -7,12 +10,12 @@ package easy
  * Given a string columnTitle that represents the column title as appear in an Excel sheet, return its corresponding column number.
  */
 
-class Easy171 {
+class Easy171 : MathTopic, StringTopic {
 
     fun titleToNumber(s: String): Int {
         var result = 0
-        for (i in s.length - 1 downTo 0) {
-            result += Math.pow(26.toDouble(), (s.length - 1 - i).toDouble()).toInt() * (s[i].code - 64)
+        for (i in s.lastIndex downTo 0) {
+            result += Math.pow(26.toDouble(), (s.lastIndex - i).toDouble()).toInt() * (s[i].toInt() - 64)
         }
         return result
     }
