@@ -5,6 +5,7 @@ import SortingTopic
 import TwoPointersTopic
 import utils.ListNode
 
+
 /**
  * 148. Sort List
  * https://leetcode.com/problems/sort-list/
@@ -12,12 +13,11 @@ import utils.ListNode
  * Given the head of a linked list, return the list after sorting it in ascending order.
  */
 
-class Medium148: LinkedListTopic, TwoPointersTopic, SortingTopic {
+class Medium148 : LinkedListTopic, TwoPointersTopic, SortingTopic {
 
     fun merge(lst1: ListNode?, lst2: ListNode?): ListNode? {
-        if (lst1 == null) return lst2
-        if (lst2 == null) return lst1
-
+        lst1 ?: return lst2
+        lst2 ?: return lst1
         val result: ListNode
         if (lst1.`val` <= lst2.`val`) {
             result = lst1
@@ -54,7 +54,7 @@ class Medium148: LinkedListTopic, TwoPointersTopic, SortingTopic {
     }
 
     // Sorting linked list using merge sort.
-    fun sortList(head: ListNode?): ListNode? {
+    fun sortList1(head: ListNode?): ListNode? {
         // Base case
         if (head?.next == null) {
             return head
@@ -67,5 +67,24 @@ class Medium148: LinkedListTopic, TwoPointersTopic, SortingTopic {
 
         // merge the two sorted list into single list.
         return merge(first_half, second_half)
+    }
+
+    // mine
+    fun sortList(head: ListNode?): ListNode? {
+        head ?: return null
+        val list = ArrayList<Int>()
+        var temp = head
+        while (temp != null) {
+            list.add(temp.`val`)
+            temp = temp.next
+        }
+        list.sort()
+        val sentinel = ListNode(-1)
+        temp = sentinel
+        for (i in list.indices) {
+            temp?.next = ListNode(list[i])
+            temp = temp?.next!!
+        }
+        return sentinel.next
     }
 }
