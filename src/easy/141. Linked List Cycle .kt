@@ -1,5 +1,8 @@
 package easy
 
+import HashTableTopic
+import LinkedListTopic
+import TwoPointersTopic
 import utils.ListNode
 
 /**
@@ -12,20 +15,21 @@ import utils.ListNode
  * Return true if there is a cycle in the linked list. Otherwise, return false.
  */
 
-class Easy141 {
+class Easy141 : HashTableTopic, LinkedListTopic, TwoPointersTopic {
 
     fun hasCycle(head: ListNode?): Boolean {
-        if (head == null) return false
-        if (head.next == null || head.next!!.next == null) return false
+        head ?: return false
+        head.next ?: return false
+        head.next?.next ?: return false
         if (head === head.next) return true
         var t1 = head
-        var t2 = head.next!!.next
+        var t2 = head.next?.next
         while (true) {
             when {
                 t1 === t2 -> return true
-                t2!!.next != null && t2.next!!.next != null -> {
-                    t1 = t1!!.next
-                    t2 = t2.next!!.next
+                t2?.next != null && t2.next!!.next != null -> {
+                    t1 = t1?.next
+                    t2 = t2.next?.next
                 }
                 else -> return false
             }
