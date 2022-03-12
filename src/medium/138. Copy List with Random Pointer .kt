@@ -22,7 +22,7 @@ import LinkedListTopic
  * Your code will only be given the head of the original linked list.
  */
 
-class Medium138: HashTableTopic, LinkedListTopic {
+class Medium138 : HashTableTopic, LinkedListTopic {
 
     fun copyRandomList(head: Node?): Node? {
         head ?: return null
