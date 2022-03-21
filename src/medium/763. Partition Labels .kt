@@ -15,16 +15,16 @@ Return a list of integers representing the size of these parts.
 
 class Medium763 : HashTableTopic, TwoPointersTopic, GreedyTopic {
 
-    fun partitionLabels(S: String): List<Int> {
+    fun partitionLabels(s: String): List<Int> {
         val last = IntArray(26)
-        for (i in S.indices) {
-            last[S[i] - 'a'] = i
+        for (i in s.indices) {
+            last[s[i] - 'a'] = i
         }
         var j = 0
         var anchor = 0
-        val ans = mutableListOf<Int>()
-        for (i in S.indices) {
-            j = maxOf(j, last[S[i] - 'a'])
+        val ans = ArrayList<Int>()
+        for (i in s.indices) {
+            j = maxOf(j, last[s[i] - 'a'])
             if (i == j) {
                 ans.add(i - anchor + 1)
                 anchor = i + 1
